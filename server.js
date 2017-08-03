@@ -147,7 +147,7 @@ app.get('/:articleName', function (req, res) {
   res.send(createTemplate(articles[articleName]));
 });
 
-/*
+/*//The below code section for mypage1 and mypage2 placed after '/:articleName' (declared above) is generating error
 //Here we are sending a text to response object, res, not contents of any file
 app.get('/mypage1', function (req, res) {
   res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
