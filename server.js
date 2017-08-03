@@ -138,6 +138,7 @@ app.get('/:articleName', function (req, res) {
   res.send(createTemplate(articles[articleName]));
 });
 
+/*
 //Here we are sending a text to response object, res, not contents of any file
 app.get('/mypage1', function (req, res) {
   res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
@@ -146,7 +147,7 @@ app.get('/mypage1', function (req, res) {
 app.get('/mypage2', function (req, res) {
   res.send(exampleDemo(obj));
 });
-
+*/
 //if style.css is requested,this function will execute,contents of style.css is sent to response( referenced as res here) object
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
