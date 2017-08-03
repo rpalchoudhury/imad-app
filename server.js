@@ -48,6 +48,9 @@ app.get('/article-five', function (req, res) {
   res.send(exampleDemo(obj));
 });
 
+var counter=0;
+app.get('/counter',function(req,res){counter++;res.send('Counter=>'+counter.toString())});
+
 var articles={
  'article-one':{
     title:'SSH Facts By Rituparna Palchoudhury',
