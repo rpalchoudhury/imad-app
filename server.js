@@ -76,7 +76,7 @@ var articles={
      
  },
  'article-three':{ title:'JavaScript Facts By Rituparna Palchoudhury',
-    heading:'Article Two',
+    heading:'Article Three',
     namendate:'By--- Rituparna Palchoudhury,5th August 2017',
     content:` 
     <p>
