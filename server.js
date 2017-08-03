@@ -5,6 +5,39 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var obj={
+    title:'An Example By Ritu',
+    heading:'Example',
+    content:`<p>
+    Hi, this is just a demo to show usage of a variable object, the object is getting passed to a function 'exampleDemo', and that function is getting called in app.send(), and contents passed to response object res.
+    </p>`
+};
+
+function exampleDemo(data)
+{
+    var title=data.title;
+    var heading=data.heading;
+    var content=data.content;
+    var htmlTemplate=`
+    <html>
+    <head><title>${title}</title>
+    <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+        <body>
+            <div class="container">
+            <div>
+                <a href="/">Home</a>
+            </div>
+            <hr/>
+            <div>
+                <h1>${heading}</h1>
+                ${content}
+            </div>
+            </div>
+        </body>
+</html>`;
+}
+
 var articles={
  articleOne:{
     title:'SSH Facts By Rituparna Palchoudhury',
@@ -105,7 +138,10 @@ app.get('/article-three', function (req, res) {
   res.send(createTemplate(articleThree));
 });
 app.get('/article-four', function (req, res) {
-  res.send('This is article four');
+  res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
+});
+app.get('/article-five', function (req, res) {
+  res.send(exampleDemo(obj));
 });
 
 //if style.css is requested,this function will execute,contents of style.css is sent to response( referenced as res here) object
