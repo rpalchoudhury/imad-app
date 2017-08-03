@@ -56,6 +56,7 @@ var htmlTemplate=`
             </div>
         </body>
 </html>`;
+return htmlTemplate;
 }
 
 //if this url is requested, i.e. if user uses a slash, this function will execute, function tells pick up index.html and send contents of that index.html to response object res
@@ -65,7 +66,7 @@ app.get('/', function (req, res) {
 
 
 app.get('/article-one', function (req, res) {
-  res.sendFile(path.join(__dirname,'ui','article-one.html'));
+  res.send(createTemplate(articleOne));
 });
 
 //Here we are sending a text to response object, res, not contents of any file
