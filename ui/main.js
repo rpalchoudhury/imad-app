@@ -43,15 +43,15 @@ img.onclick=function(){
     var interval=setInterval(moveRightLeft,50);//every 100ms move d img to d right,u can decreasse it to 50 to make it more gradual 
 };
 
-//var counter=0;
+var counter=0;
 var button=document.getElementById('buttoncount');
-button.onclick=function(){
+   button.onclick=function(){
     //Make a request to the counter endpoint
     //Capture the response and store it in a variable
     //Render the value of the variable in the correct span
-    counter=counter+1;
-    var count=document.getElementById('counter');
-    count.innerHTML=counter.toString();
+      count++;
+      var c=document.getElementById('counter');
+      c.innerHTML=count.toString();
 };
 
 
