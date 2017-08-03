@@ -10,11 +10,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-//Here we are sending a text to response object, res, not contents of any file
+
 app.get('/article-one', function (req, res) {
-  res.send('This is article one');
+  res.sendFile(path.join(__dirname,'ui','article-one.html');
 });
 
+//Here we are sending a text to response object, res, not contents of any file
 app.get('/article-two', function (req, res) {
   res.send('This is article two');
 });
