@@ -62,7 +62,7 @@ var articles={
                 </p>`
     
 },
- 'article-tw0':{ 
+ 'article-two':{ 
     title:'HTML Facts By Rituparna Palchoudhury',
     heading:'Article Two',
     namendate:'By--- Rituparna Palchoudhury,4th August 2017',
