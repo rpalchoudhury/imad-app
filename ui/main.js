@@ -45,7 +45,7 @@ img.onclick=function(){
 
 //var counter=0;
 var button=document.getElementById('buttoncount');
-button.onClick=function(){
+button.onclick=function(){
     //Make a request to the counter endpoint
     //Capture the response and store it in a variable
     //Render the value of the variable in the correct span
