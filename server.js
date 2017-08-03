@@ -5,8 +5,9 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
-    title:'Rituparna Palchoudhury',
+var articles={
+ articleOne:{
+    title:'SSH Facts By Rituparna Palchoudhury',
     heading:'Article One',
     namendate:'By--- Rituparna Palchoudhury,3rd August 2017',
     content:` 
@@ -27,6 +28,32 @@ var articleOne={
                     SSH is typically used to log into a remote machine and execute commands, but it also supports tunneling, forwarding TCP ports and X11 connections; it can transfer files using the associated SSH file transfer (SFTP) or secure copy (SCP) protocols.SSH uses the client-server model.
                 </p>`
     
+},
+ articleTw0:{ 
+    title:'HTML Facts By Rituparna Palchoudhury',
+    heading:'Article Two',
+    namendate:'By--- Rituparna Palchoudhury,4th August 2017',
+    content:` 
+    <p>
+          Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript it forms a triad of cornerstone technologies for the World Wide Web. Web browsers receive HTML documents from a webserver or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
+                </p>
+                <p>
+                  HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as <img /> and <input /> introduce content into the page directly. Others such as <p>...</p> surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
+                </p>`
+     
+ },
+ articleThree:{ title:'JavaScript Facts By Rituparna Palchoudhury',
+    heading:'Article Two',
+    namendate:'By--- Rituparna Palchoudhury,5th August 2017',
+    content:` 
+    <p>
+        JavaScript often abbreviated as JS, is a high-level, dynamic, weakly typed, object-based, multi-paradigm, and interpreted programming language. Alongside HTML and CSS, JavaScript is one of the three core technologies of World Wide Web content production. It is used to make webpages interactive and provide online programs, including video games.
+                </p>
+                <p>
+                 The majority of websites employ it, and all modern web browsers support it without the need for plug-ins by means of a built-in JavaScript engine. Each of the many JavaScript engines represent a different implementation of JavaScript, all based on the ECMAScript specification, with some engines not supporting the spec fully, and with many engines supporting additional features beyond ECMA.
+                </p>`
+     
+ }
 };
 
 function createTemplate(data){
@@ -71,11 +98,14 @@ app.get('/article-one', function (req, res) {
 
 //Here we are sending a text to response object, res, not contents of any file
 app.get('/article-two', function (req, res) {
-  res.send('This is article two');
+  res.send(createTemplate(articleTwo));
 });
 
 app.get('/article-three', function (req, res) {
-  res.send('This is article three');
+  res.send(createTemplate(articleThree));
+});
+app.get('/article-four', function (req, res) {
+  res.send('This is article four');
 });
 
 //if style.css is requested,this function will execute,contents of style.css is sent to response( referenced as res here) object
