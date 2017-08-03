@@ -45,14 +45,14 @@ img.onclick=function(){
 
 //var counter=0;
 var button=document.getElementById('buttoncount');
-button.onclick(function(){
+button.onClick=function(){
     //Make a request to the counter endpoint
     //Capture the response and store it in a variable
     //Render the value of the variable in the correct span
     counter=counter+1;
     var count=document.getElementById('counter');
     count.innerHTML=counter.toString();
-});
+};
 
 
 
