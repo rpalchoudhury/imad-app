@@ -39,7 +39,7 @@ function exampleDemo(data)
 }
 
 var articles={
- articleOne:{
+ 'article-one':{
     title:'SSH Facts By Rituparna Palchoudhury',
     heading:'Article One',
     namendate:'By--- Rituparna Palchoudhury,3rd August 2017',
@@ -62,7 +62,7 @@ var articles={
                 </p>`
     
 },
- articleTw0:{ 
+ 'article-tw0':{ 
     title:'HTML Facts By Rituparna Palchoudhury',
     heading:'Article Two',
     namendate:'By--- Rituparna Palchoudhury,4th August 2017',
@@ -75,7 +75,7 @@ var articles={
                 </p>`
      
  },
- articleThree:{ title:'JavaScript Facts By Rituparna Palchoudhury',
+ 'article-three':{ title:'JavaScript Facts By Rituparna Palchoudhury',
     heading:'Article Two',
     namendate:'By--- Rituparna Palchoudhury,5th August 2017',
     content:` 
@@ -125,8 +125,14 @@ app.get('/', function (req, res) {
 });
 
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+    //Initially articles contained articleOne, articleTwo, articleThree, these were changed to article-one, article-two,
+    //article-three respectively,and to remove syntax error, 'article-one','article-two','article-three' respectively,
+    //names were changed to match url in get method and articles[articleName], in get method, the colon after slash indicates 
+    //articleName to be resoved at runtime
+    //articleName=article-one
+    //articles[articleName]={} content object for article-one
+  res.send(createTemplate(articles[articleName]));
 });
 
 //Here we are sending a text to response object, res, not contents of any file
