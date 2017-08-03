@@ -4,6 +4,6 @@ element.innerHTML="My Name Is Rituparna";
 
 //Move the image onClick
 var img=document.getElementById("madi");
-image.onclick=function(){
+img.onclick=function(){
     img.style.marginLeft='100px';
 };
