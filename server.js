@@ -129,20 +129,15 @@ app.get('/:articleName', function (req, res) {
     //Initially articles contained articleOne, articleTwo, articleThree, these were changed to article-one, article-two,
     //article-three respectively,and to remove syntax error, 'article-one','article-two','article-three' respectively,
     //names were changed to match url in get method and articles[articleName], in get method, the colon after slash indicates 
-    //articleName to be resoved at runtime
+    //articleName to be resolved at runtime, this feature is provided by express library.We took this approach to avoid
+    //multiple app.get('url')
     //articleName=article-one
     //articles[articleName]={} content object for article-one
+    var articleName=req.params.articleName;
   res.send(createTemplate(articles[articleName]));
 });
 
 //Here we are sending a text to response object, res, not contents of any file
-app.get('/article-two', function (req, res) {
-  res.send(createTemplate(articleTwo));
-});
-
-app.get('/article-three', function (req, res) {
-  res.send(createTemplate(articleThree));
-});
 app.get('/article-four', function (req, res) {
   res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
 });
