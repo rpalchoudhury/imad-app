@@ -42,9 +42,9 @@ img.onclick=function(){
     //Below code to move the image gradually to right, i.e. animation
     var interval=setInterval(moveRightLeft,50);//every 100ms move d img to d right,u can decreasse it to 50 to make it more gradual 
 };
-
+//console.log(document.getElementById(''"blue"'')) 
 var count=0;
-var button=document.getElementById('buttoncount');
+var button=document.getElementById("buttoncount");
    button.onclick=function(){
     //Make a request to the counter endpoint
     //Capture the response and store it in a variable
