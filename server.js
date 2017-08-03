@@ -125,7 +125,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-
+/*
 app.get('/:articleName', function (req, res) {
     //Initially articles contained articleOne, articleTwo, articleThree, these were changed to article-one, article-two,
     //article-three respectively,and to remove syntax error, 'article-one','article-two','article-three' respectively,
@@ -137,9 +137,9 @@ app.get('/:articleName', function (req, res) {
     var articleName=req.params.articleName;
   res.send(createTemplate(articles[articleName]));
 });
-
+*/
 //Here we are sending a text to response object, res, not contents of any file
-app.get('/ui/aarticle-four', function (req, res) {
+app.get('/aarticle-four', function (req, res) {
   res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
 });
 
