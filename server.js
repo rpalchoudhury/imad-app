@@ -138,10 +138,10 @@ app.get('/:articleName', function (req, res) {
 });
 
 //Here we are sending a text to response object, res, not contents of any file
-app.get('/article-four', function (req, res) {
+app.get('/aarticle-four', function (req, res) {
   res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
 });
-app.get('/article-five', function (req, res) {
+app.get('/aarticle-five', function (req, res) {
   res.send(exampleDemo(obj));
 });
 
