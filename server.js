@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var obj={
-    title1:'An Example By Ritu',
+    title:'An Example By Ritu',
     heading:'Example',
     content:`<p>
     Hi, this is just a demo to show usage of a variable object, the object is getting passed to a function 'exampleDemo', and that function is getting called in app.send(), and contents passed to response object res.
@@ -15,7 +15,7 @@ var obj={
 
 function exampleDemo(data)
 {
-    var title=data.title1;
+    var title=data.title;
     var heading=data.heading;
     var content=data.content;
     var htmlTemplate=`
