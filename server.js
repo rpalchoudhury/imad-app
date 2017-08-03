@@ -162,6 +162,10 @@ app.get('/mypage2', function (req, res) {
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
+
+//Earlier the below app.get for main.js was not present, this was giving a 404 Http error message at runtimebecause in 
+//index.html we made a call to main.js inside <script> tag, but the server side js did not handle it, like its handling for
+//style.css or madi.png, all of which are being used in the index.html file
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
