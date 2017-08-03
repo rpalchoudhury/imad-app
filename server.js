@@ -36,6 +36,7 @@ function exampleDemo(data)
             </div>
         </body>
 </html>`;
+return htmlTemplate;
 }
 
 var articles={
@@ -141,6 +142,7 @@ app.get('/:articleName', function (req, res) {
 app.get('/aarticle-four', function (req, res) {
   res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
 });
+
 app.get('/aarticle-five', function (req, res) {
   res.send(exampleDemo(obj));
 });
