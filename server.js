@@ -1,8 +1,10 @@
 var express = require('express');//express is the library imported to create web servers,handle http connections,listening //on ports
-var morgan = require('morgan');//morgan is the library imported to help us output logs of the server, what requests coming to the server and how we //are responding
+var morgan = require('morgan');//morgan is the library imported to help us output logs of the server, what requests coming to the server and how we //are responding,such lind of logs
 var path = require('path');
 
 var app = express();
+
+//below line tells the server to use morgan module with combined predefined format for logging, there are other predefined //formats like common, dev, short, tiny
 app.use(morgan('combined'));
 
 var obj={
