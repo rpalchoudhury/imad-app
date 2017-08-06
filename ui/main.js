@@ -42,8 +42,32 @@ img.onclick=function(){
     //Below code to move the image gradually to right, i.e. animation
     var interval=setInterval(moveRightLeft,50);//every 100ms move d img to d right,u can decreasse it to 50 to make it more gradual 
 };
+
+var button=document.getElementById("buttoncount");
+button.onclick=function(){
+    
+//Create the request object
+var request = new XMLHttpRequest();
+request.onreadystatechange=function(){
+    
+    if(request.readyState==XMLHttpRequest.DONE)
+    {
+        if(request.status==200)
+        {
+            var counter=request.responseText;
+            var c=document.getElementById('counter');
+            c.innerHTML=count.toString();
+        }
+    }
+};
+
+//Make the request
+request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/counter",true);
+request.send(null);
+
+};
 //console.log(document.getElementById('buttoncount')); 
-var count=0;
+/*var count=0;
 var button=document.getElementById("buttoncount");
 //console.log('Button:-'+button) ;
    button.onclick=function(){
@@ -54,6 +78,7 @@ var button=document.getElementById("buttoncount");
       var c=document.getElementById('counter');
       c.innerHTML=count.toString();
 };
+*/
 
 
 
