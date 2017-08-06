@@ -81,6 +81,8 @@ submitButton.onclick=function(){
     {
         list='<li>'+names[i]+'<li>';
     }
+    var nameList=document.getElementById('namelist');
+    nameList.innerHTML=list;
 };
 //console.log(document.getElementById('buttoncount')); 
 /*var count=0;
