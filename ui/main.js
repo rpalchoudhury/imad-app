@@ -69,6 +69,19 @@ request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/counter",true);//t
 request.send(null);
 
 };
+
+var inputText=document.getElementById('name').value;
+var submitButton=document.getElementById('submit');
+submitButton.onclick=function(){
+    //Make a request to the server and send the name
+    //Capture a list of names and render it as a list
+    var names=['name1','name2','name3'];
+    var list='';
+    for(var i=0;i<names.length;i++)
+    {
+        list='<li>'+names[i]+'<li>';
+    }
+};
 //console.log(document.getElementById('buttoncount')); 
 /*var count=0;
 var button=document.getElementById("buttoncount");
