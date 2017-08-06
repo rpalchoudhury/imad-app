@@ -43,6 +43,8 @@ img.onclick=function(){
     var interval=setInterval(moveRightLeft,50);//every 100ms move d img to d right,u can decreasse it to 50 to make it more gradual 
 };
 
+
+//The code below is working for endpoint /count defined in server.js,picking up the counter value of response from that endpoint
 var button=document.getElementById("buttoncount");
 button.onclick=function(){
     
@@ -63,7 +65,7 @@ request.onreadystatechange=function(){
 };
 
 //Make the request
-request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/counter",true);
+request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/counter",true);//this url shud match endpoint /count in server.js
 request.send(null);
 
 };
