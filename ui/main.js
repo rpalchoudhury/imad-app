@@ -56,7 +56,7 @@ request.onreadystatechange=function(){
         {
             var counter=request.responseText;
             var c=document.getElementById('counter');
-            c.innerHTML=count.toString();
+            c.innerHTML=counter.toString();
         }
     }
 };
