@@ -1,3 +1,5 @@
+//The server.js file holds all the endpoints/requests for which the server must listen
+
 var express = require('express');//express is the library imported to create web servers,handle http connections,listening //on ports
 var morgan = require('morgan');//morgan is the library imported to help us output logs of the server, what requests coming to the server and how we //are responding,such lind of logs
 var path = require('path');
@@ -48,6 +50,16 @@ app.get('/article-four', function (req, res) {
 
 app.get('/article-five', function (req, res) {
   res.send(exampleDemo(obj));
+});
+
+var names=[];
+//Create an endpoint for fetching name from input text
+app.get('/submit-name/:name',function(req,res){
+    var name=request.params.name;
+    names.push(name);
+    //JSON:Javascript Object Notation
+    res.send(JSON.stringify(names));
+    
 });
 
 var counter=0;
