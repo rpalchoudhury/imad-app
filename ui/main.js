@@ -57,6 +57,7 @@ request.onreadystatechange=function(){
             var counter=request.responseText;
             var c=document.getElementById('counter');
             c.innerHTML=counter.toString();
+            console.log(this."Ritu:-"+responseText);
         }
     }
 };
