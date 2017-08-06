@@ -85,6 +85,7 @@ submitButton.onclick=function(){
     }
     var nameList=document.getElementById('namelist');
     nameList.innerHTML=list;
+    console.log("Ritu:-"+list);
 };
 //console.log(document.getElementById('buttoncount')); 
 /*var count=0;
