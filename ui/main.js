@@ -72,18 +72,19 @@ request.send(null);
 
 var inputText=document.getElementById('name').value;
 var submitButton=document.getElementById('submit');
+ var nameList=document.getElementById('namelist');
 submitButton.onclick=function(){
     //Make a request to the server and send the name
     //Capture a list of names and render it as a list
     var names=['name1','name2','name3','name4'];
-    var list=[];
+    var list='';
     for(var i=0;i<names.length;i++)
     {
        
-        list[i]='<li>'+names[i]+'<li>';
-         console.log("Ritu:-"+list);
+        list +='<li>'+names[i]+'<li>';
+         
     }
-    var nameList=document.getElementById('namelist');
+   
     nameList.innerHTML=list;
     console.log("Ritu:-"+list);
 };
