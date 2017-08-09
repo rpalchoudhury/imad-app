@@ -6,7 +6,6 @@ var path = require('path');
 
 var app = express();
 
-var onclick=function(){document.getElementById('commentinput').innerHTML='';};
 
 //below line tells the server to use morgan module with combined predefined format for logging, there are other predefined //formats like common, dev, short, tiny
 app.use(morgan('combined'));
@@ -36,7 +35,7 @@ function exampleDemo(data,commentobj)
     var htmlTemplate=`
     <html>
     <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" />
+    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/main.js"></script>
     </head>
         <body>
             <div class="container">
@@ -140,7 +139,7 @@ function createTemplate(data,commentobj){
 var htmlTemplate=`
 <html>
     <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" />
+    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/main.js"></script>
     </head>
         <body>
             <div class="container">
