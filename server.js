@@ -6,15 +6,17 @@ var path = require('path');
 
 var app = express();
 
+var onclick=function(){document.getElementById('commentinput').innerHTML='';};
+
 //below line tells the server to use morgan module with combined predefined format for logging, there are other predefined //formats like common, dev, short, tiny
 app.use(morgan('combined'));
 
 var commentobj={comment:`
-                <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%"></input>
-                <input type="submit" id="submit" value="Submit Your Comments"></input>
-                <h4>Comments:-</h2>
-                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-                <ul id="comments"></ul></div>`};
+        <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick()"></input>
+        <input type="submit" id="submit" value="Submit Your Comments"></input>
+        <h4>Comments:-</h2>
+        <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+        <ul id="comments"></ul></div>`};
 
 var obj={
     title:'An Example By Ritu',
