@@ -98,14 +98,7 @@ var articles={
                 </p>
                 <p>
                     SSH is typically used to log into a remote machine and execute commands, but it also supports tunneling, forwarding TCP ports and X11 connections; it can transfer files using the associated SSH file transfer (SFTP) or secure copy (SCP) protocols.SSH uses the client-server model.
-                </p> `,
-                comment:`
-                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
-                <input type="submit" id="submit" value="Submit Your Comments"></input>
-                <h4>Comments:-</h2>
-                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-                <ul id="comments"></ul></div>`
-                
+                </p> `
     
 },
  'article-two':{ 
@@ -118,13 +111,7 @@ var articles={
                 </p>
                 <p>
                   HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as <img /> and <input /> introduce content into the page directly. Others such as <p>...</p> surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
-                </p>`,
-                comment:`
-                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
-                <input type="submit" id="submit" value="Submit Your Comments"></input>
-                <h4>Comments:-</h2>
-                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-                <ul id="comments"></ul></div>`
+                </p>`
      
  },
  'article-three':{ title:'JavaScript Facts By Rituparna Palchoudhury',
@@ -136,23 +123,17 @@ var articles={
                 </p>
                 <p>
                  The majority of websites employ it, and all modern web browsers support it without the need for plug-ins by means of a built-in JavaScript engine. Each of the many JavaScript engines represent a different implementation of JavaScript, all based on the ECMAScript specification, with some engines not supporting the spec fully, and with many engines supporting additional features beyond ECMA.
-                </p>`,
-                comment:`
-                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
-                <input type="submit" id="submit" value="Submit Your Comments"></input>
-                <h4>Comments:-</h2>
-                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-                <ul id="comments"></ul></div>`
+                </p>`
      
  }
 };
 
-function createTemplate(data){
+function createTemplate(data,commentobj){
     var title=data.title;
     var heading=data.heading;
     var namendate=data.namendate;
     var content= data.content;
-    var comment=data.comment;
+    var comment=commentobj.comment;
     
 var htmlTemplate=`
 <html>
@@ -194,7 +175,7 @@ app.get('/:articleName', function (req, res) {
     //articleName=article-one
     //articles[articleName]={} content object for article-one
     var articleName=req.params.articleName;
-  res.send(createTemplate(articles[articleName]));
+  res.send(createTemplate(articles[articleName],commentobj));
 });
 
 /*//The below code section for mypage1 and mypage2 placed after '/:articleName' (declared above) is generating error
