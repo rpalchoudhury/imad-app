@@ -41,6 +41,6 @@ submitbutton.onclick=function(){
 
 //Make the request
 var comment=document.getElementById('commentinput');
-request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment'+comment,true);
+request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?comment='+comment,true);
 request.send(null);
 };
