@@ -75,7 +75,7 @@ var submitButton=document.getElementById('submit');
  var nameList=document.getElementById('namelist');
 submitButton.onclick=function(){
     //Make a request to the server and send the name
-    //Capture a list of names and render it as a list
+    //Capture a list of names (along with the new name entered appended) and render it as a list
     var names=['name1','name2','name3','name4'];
     var list='';
     for(var i=0;i<names.length;i++)
@@ -86,7 +86,7 @@ submitButton.onclick=function(){
     }
    
     nameList.innerHTML=list;
-    console.log("Ritu:-"+list);
+    //console.log("Ritu:-"+list);
 };
 //console.log(document.getElementById('buttoncount')); 
 /*var count=0;
