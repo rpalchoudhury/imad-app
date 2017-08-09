@@ -42,7 +42,7 @@ submitbutton.onclick=function(){
     };
 
 //Make the request
-var comment=document.getElementById('commentinput');
+var comment=document.getElementById('commentinput').value;
 console.log('before opening request');
 request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?comment='+comment,true);
 console.log('request opened');
