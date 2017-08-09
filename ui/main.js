@@ -74,18 +74,36 @@ var inputText=document.getElementById('name').value;
 var submitButton=document.getElementById('submit');
  var nameList=document.getElementById('namelist');
 submitButton.onclick=function(){
-    //Make a request to the server and send the name
-    //Capture a list of names (along with the new name entered appended) and render it as a list
-    var names=['name1','name2','name3','name4'];
-    var list='';
-    for(var i=0;i<names.length;i++)
-    {
+    
+    //Create the request object
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
+        if(request.readyState==XMLHttpRequest.DONE)
+        {
+            if(request.status==200)
+            {
+                //Capture a list of names (along with the new name entered appended) and render it as a list
+                //var names=['name1','name2','name3','name4'];
+                var names=request.responseText;
+                names=JSON.parse(names);//converting the string obtained above back to an object, in this case an array object
+                var list='';
+                for(var i=0;i<names.length;i++)
+                    {
        
-        list +='<li>'+names[i]+'</li>';
+                     list +='<li>'+names[i]+'</li>';
          
-    }
+                    }
    
-    nameList.innerHTML=list;
+            nameList.innerHTML=list;
+            }
+        }
+    };
+    
+    
+//Make a request to the server and send the name
+request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/submit-name?name="+inputText,true);//this url shud match endpoint /submit-name in //server.js
+request.send(null);
+    
     //console.log("Ritu:-"+list);
 };
 //console.log(document.getElementById('buttoncount')); 
