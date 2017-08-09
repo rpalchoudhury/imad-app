@@ -1,8 +1,8 @@
 console.log('Loaded!');
 
-var onclick=function(text, _this){
-    if(text == _this.value)
-        _this.value = '';
+var onclick=function(obj){
+    if(obj.value == 'Enter Your Comments')
+        obj.value = '';
     //document.getElementById('commentinput').value='';
     console.log('Clicked!');
 };
