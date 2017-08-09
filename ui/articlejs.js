@@ -23,6 +23,16 @@ var commentList=document.getElementById('comments');
 console.log(submitbutton);
 submitbutton.onclick=function(){
     console.log('inside submitbtn');
+    if(document.getElementById('commentinput').value.length===0)
+    {
+        alert('Please Enter Some Comment');
+    }
+    else if(document.getElementById('commentinput').value.length<6)
+    {
+        alert('Your Comment Is Too Short!!!');
+    }
+    else
+    {
     //Create request object
     var request=new XMLHttpRequest();
     console.log('before readystate function');
@@ -52,4 +62,5 @@ request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?co
 console.log('request opened');
 request.send(null);
 console.log('request sent');
+}
 };
