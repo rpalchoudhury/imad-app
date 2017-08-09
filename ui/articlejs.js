@@ -20,6 +20,7 @@ var onblur=function(){
 //Comments section
 var submitbutton=document.getElementById('submit');
 var commentList=document.getElementById('comments');
+console.log(submitbutton);
 submitbutton.onclick=function(){
     console.log('inside submitbtn');
     //Create request object
