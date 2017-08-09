@@ -28,6 +28,7 @@ function exampleDemo(data)
     var title=data.title;
     var heading=data.heading;
     var content=data.content;
+    var comment=data.comment;
     var htmlTemplate=`
     <html>
     <head><title>${title}</title>
@@ -149,6 +150,7 @@ function createTemplate(data){
     var heading=data.heading;
     var namendate=data.namendate;
     var content= data.content;
+    var comment=data.comment;
     
 var htmlTemplate=`
 <html>
