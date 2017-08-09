@@ -18,7 +18,7 @@ var onblur=function(){
     
 };
 //Comments section
-var submitbutton=document.getElementById('ssubmit');
+var submitbutton=document.getElementById('submit');
 var commentList=document.getElementById('comments');
 submitbutton.onclick=function(){
     console.log('inside submitbtn');
