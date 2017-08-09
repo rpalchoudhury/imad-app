@@ -35,7 +35,8 @@ function exampleDemo(data,commentobj)
     var htmlTemplate=`
     <html>
     <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/main.js"></script>
+    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/articlejs.js"></script>
+    <script type="text/javascript" src="/ui/main.js"></script>
     </head>
         <body>
             <div class="container">
@@ -139,7 +140,8 @@ function createTemplate(data,commentobj){
 var htmlTemplate=`
 <html>
     <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/main.js"></script>
+    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/articlejs.js"></script>
+    <script type="text/javascript" src="/ui/main.js"></script>
     </head>
         <body>
             <div class="container">
@@ -200,6 +202,10 @@ app.get('/ui/style.css', function (req, res) {
 //style.css or madi.png, all of which are being used in the index.html file
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
+});
+
+app.get('/ui/articlejs.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'articlejs.js'));
 });
 
 //if the following url path /ui/madi.png is requested, this function will execute
