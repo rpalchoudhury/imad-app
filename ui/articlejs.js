@@ -30,6 +30,7 @@ submitbutton.onclick=function(){
     else if(document.getElementById('commentinput').value.length<6)
     {
         alert('Your Comment Is Too Short!!!');
+        document.getElementById('commentinput').placeholder='Enter Your Comments';
     }
     else
     {
