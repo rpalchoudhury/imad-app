@@ -55,9 +55,9 @@ app.get('/article-five', function (req, res) {
 var names=[];
 //Create an endpoint for fetching name from input text
 app.get('/submit-name/:name',function(req,res){
-    var name=request.params.name;
+    var name=req.params.name;
     names.push(name);
-    //JSON:Javascript Object Notation
+    //JSON:Javascript Object Notation to convert the javascript object array to string because we can send everything to //response as string only, even integers are converted to strings before sending to response object
     res.send(JSON.stringify(names));
     
 });
