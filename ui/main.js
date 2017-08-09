@@ -1,6 +1,8 @@
 console.log('Loaded!');
 
-var onclick=function(){document.getElementById('commentinput').innerHTML='';};
+var onclick=function(){document.getElementById('commentinput').innerHTML='';
+    console.log('Clicked!');
+};
 var element=document.getElementById('main-text');
 element.innerHTML="My Name Is Rituparna";
 
