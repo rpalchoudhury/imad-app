@@ -1,7 +1,7 @@
 console.log('Loaded!');
 
 var onclick=function(obj){
-    if(obj.value == 'Enter Your Comments')
+    if(obj.value.toString() == 'Enter Your Comments')
     {
         console.log('Inside if else Clicked!');
     document.getElementById('commentinput').value='';//obj.value='';
