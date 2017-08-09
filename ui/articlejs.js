@@ -25,7 +25,9 @@ submitbutton.onclick=function(){
     console.log('inside submitbtn');
     //Create request object
     var request=new XMLHttpRequest();
+    console.log('before readystate function');
     request.onreadystatechange=function(){
+        console.log('inside ready state function');
         if(request.readyState==XMLHttpRequest.DONE)
         {
             if(request.status==200)
