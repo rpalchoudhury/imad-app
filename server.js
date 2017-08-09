@@ -14,7 +14,13 @@ var obj={
     heading:'Example',
     content:`<p>
     Hi, this is just a demo to show usage of a variable object, the object is getting passed to a function 'exampleDemo', and that function is getting called in app.send(), and contents passed to response object res.
-    </p>`
+    </p>`,
+    comment:`
+                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
+                <input type="submit" id="submit" value="Submit Your Comments"></input>
+                <h4>Comments:-</h2>
+                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+                <ul id="comments"></ul></div>`
 };
 
 function exampleDemo(data)
@@ -37,6 +43,7 @@ function exampleDemo(data)
                 <h1>${heading}</h1>
                 ${content}
             </div>
+            <div>${comment}</div>
             </div>
         </body>
 </html>`;
@@ -88,7 +95,14 @@ var articles={
                 </p>
                 <p>
                     SSH is typically used to log into a remote machine and execute commands, but it also supports tunneling, forwarding TCP ports and X11 connections; it can transfer files using the associated SSH file transfer (SFTP) or secure copy (SCP) protocols.SSH uses the client-server model.
-                </p>`
+                </p> `,
+                comment:`
+                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
+                <input type="submit" id="submit" value="Submit Your Comments"></input>
+                <h4>Comments:-</h2>
+                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+                <ul id="comments"></ul></div>`
+                
     
 },
  'article-two':{ 
@@ -101,7 +115,13 @@ var articles={
                 </p>
                 <p>
                   HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets. Tags such as <img /> and <input /> introduce content into the page directly. Others such as <p>...</p> surround and provide information about document text and may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
-                </p>`
+                </p>`,
+                comment:`
+                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
+                <input type="submit" id="submit" value="Submit Your Comments"></input>
+                <h4>Comments:-</h2>
+                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+                <ul id="comments"></ul></div>`
      
  },
  'article-three':{ title:'JavaScript Facts By Rituparna Palchoudhury',
@@ -113,7 +133,13 @@ var articles={
                 </p>
                 <p>
                  The majority of websites employ it, and all modern web browsers support it without the need for plug-ins by means of a built-in JavaScript engine. Each of the many JavaScript engines represent a different implementation of JavaScript, all based on the ECMAScript specification, with some engines not supporting the spec fully, and with many engines supporting additional features beyond ECMA.
-                </p>`
+                </p>`,
+                comment:`
+                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
+                <input type="submit" id="submit" value="Submit Your Comments"></input>
+                <h4>Comments:-</h2>
+                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+                <ul id="comments"></ul></div>`
      
  }
 };
@@ -142,6 +168,7 @@ var htmlTemplate=`
                 
                 ${content}
             </div>
+            <div>${comment}</div>
             </div>
         </body>
 </html>`;
