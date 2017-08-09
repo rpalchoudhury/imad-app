@@ -76,6 +76,13 @@ app.get('/submit-name',function(req,res){//URL :/submit-name?name=somethingxxxxx
     
 });
 
+var comments=[];
+app.get('/article-comment',function(req,res){
+    var comment=req.query.comment;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
+});
+
 var counter=0;
 app.get('/counter',function(req,res){counter++;res.send('Counter=>'+counter.toString())});
 
