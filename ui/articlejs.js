@@ -21,7 +21,7 @@ var onblur=function(){
 var submitbutton=document.getElementById('ssubmit');
 var commentList=document.getElementById('comments');
 submitbutton.onclick=function(){
-    
+    console.log('inside submitbtn');
     //Create request object
     var request=new XMLHttpRequest();
     request.onreadystatechange=function(){
@@ -29,6 +29,7 @@ submitbutton.onclick=function(){
         {
             if(request.status==200)
             {
+                console.log('status 200');
                 var comments=request.responseText;
                 comments=JSON.parse(comments);var list='';
                 for(var i=0;i<comments.length;i++){
@@ -41,6 +42,9 @@ submitbutton.onclick=function(){
 
 //Make the request
 var comment=document.getElementById('commentinput');
+console.log('before opening request');
 request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?comment='+comment,true);
+console.log('request opened');
 request.send(null);
+console.log('request sent');
 };
