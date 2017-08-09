@@ -1,12 +1,12 @@
 console.log('Loaded!');
 
 var onclick=function(obj){
-    if(obj.value.toString() == 'Enter Your Comments')
+    if(obj.value == 'Enter Your Comments')
     {
         console.log('Inside if else Clicked!');
     document.getElementById('commentinput').value='';//obj.value='';
     }
-    console.log('Outside if else Clicked!');
+    console.log('Outside if else Clicked!'+obj.value);
 };
 var element=document.getElementById('main-text');
 element.innerHTML="My Name Is Rituparna";
