@@ -35,7 +35,7 @@ function exampleDemo(data,commentobj)
     var htmlTemplate=`
     <html>
     <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/articlejs.js"></script>
+    <link href="/ui/style.css" rel="stylesheet" />
     <script type="text/javascript" src="/ui/main.js"></script>
     </head>
         <body>
@@ -49,7 +49,7 @@ function exampleDemo(data,commentobj)
                 ${content}
             </div>
             <div>${comment}</div>
-            </div>
+            </div><script type="text/javascript" src="/ui/articlejs.js"></script>
         </body>
 </html>`;
 return htmlTemplate;
@@ -147,7 +147,7 @@ function createTemplate(data,commentobj){
 var htmlTemplate=`
 <html>
     <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" /><script type="text/javascript" src="/ui/articlejs.js"></script>
+    <link href="/ui/style.css" rel="stylesheet" />
     <script type="text/javascript" src="/ui/main.js"></script>
     </head>
         <body>
@@ -164,7 +164,7 @@ var htmlTemplate=`
                 ${content}
             </div>
             <div>${comment}</div>
-            </div>
+            </div><script type="text/javascript" src="/ui/articlejs.js"></script>
         </body>
 </html>`;
 return htmlTemplate;
