@@ -26,11 +26,12 @@ submitbutton.onclick=function(){
     if(document.getElementById('commentinput').value.length===0)
     {
         alert('Please Enter Some Comment');
+         document.getElementById('commentinput').focus();
     }
     else if(document.getElementById('commentinput').value.length<6)
     {
         alert('Your Comment Is Too Short!!!');
-        document.getElementById('commentinput').placeholder='Enter Your Comments';
+        document.getElementById('commentinput').focus();
     }
     else
     {
