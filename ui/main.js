@@ -1,12 +1,12 @@
 console.log('Loaded!');
 
 var onclick=function(obj){
-    if(obj.value == 'Enter Your Comments')
+    if(document.getElementById('commentinput').value == 'Enter Your Comments')
     {
         console.log('Inside if else Clicked!');
     document.getElementById('commentinput').value='';//obj.value='';
     }
-    document.getElementById('commentinput').placeholder='';
+    //document.getElementById('commentinput').placeholder='';
     console.log('Outside if else Clicked!'+obj.value);
 };
 var element=document.getElementById('main-text');
