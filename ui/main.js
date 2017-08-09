@@ -9,7 +9,7 @@ var onclick=function(){
     }
     console.log('Outside if else Clicked!'+obj.value);
 };
-var onfocusout=function(){
+var onfocus=function(){
     if(document.getElementById('commentinput').value==='')
     {
         console.log('Inside if else blurred!');
