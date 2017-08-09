@@ -70,7 +70,7 @@ request.send(null);
 
 };
 
-var inputText=document.getElementById('name').value;
+
 var submitButton=document.getElementById('submit');
  var nameList=document.getElementById('namelist');
 submitButton.onclick=function(){
@@ -97,15 +97,17 @@ submitButton.onclick=function(){
             nameList.innerHTML=list;
             }
         }
-    };
     
+    };    
     
 //Make a request to the server and send the name
+var inputText=document.getElementById('name').value;
 request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/submit-name?name="+inputText,true);//this url shud match endpoint /submit-name in //server.js
 request.send(null);
-    
+   
+    }; 
     //console.log("Ritu:-"+list);
-};
+
 //console.log(document.getElementById('buttoncount')); 
 /*var count=0;
 var button=document.getElementById("buttoncount");
