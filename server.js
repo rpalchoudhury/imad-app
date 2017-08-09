@@ -9,26 +9,28 @@ var app = express();
 //below line tells the server to use morgan module with combined predefined format for logging, there are other predefined //formats like common, dev, short, tiny
 app.use(morgan('combined'));
 
+var commentobj={comment:`
+                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
+                <input type="submit" id="submit" value="Submit Your Comments"></input>
+                <h4>Comments:-</h2>
+                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+                <ul id="comments"></ul></div>`};
+
 var obj={
     title:'An Example By Ritu',
     heading:'Example',
     content:`<p>
     Hi, this is just a demo to show usage of a variable object, the object is getting passed to a function 'exampleDemo', and that function is getting called in app.send(), and contents passed to response object res.
-    </p>`,
-    comment:`
-                <input type="text" id="commentinput" placeholder="Enter Your Comments"></input>
-                <input type="submit" id="submit" value="Submit Your Comments"></input>
-                <h4>Comments:-</h2>
-                <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-                <ul id="comments"></ul></div>`
+    </p>`
+    
 };
 
-function exampleDemo(data)
+function exampleDemo(data,commentobj)
 {
     var title=data.title;
     var heading=data.heading;
     var content=data.content;
-    var comment=data.comment;
+    var comment=commentobj.comment;
     var htmlTemplate=`
     <html>
     <head><title>${title}</title>
@@ -57,7 +59,7 @@ app.get('/article-four', function (req, res) {
 });
 
 app.get('/article-five', function (req, res) {
-  res.send(exampleDemo(obj));
+  res.send(exampleDemo(obj,commentobj));
 });
 
 var names=[];
