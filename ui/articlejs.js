@@ -45,6 +45,8 @@ submitbutton.onclick=function(){
 
 //Make the request
 var comment=document.getElementById('commentinput').value;
+document.getElementById('commentinput').value='';
+document.getElementById('commentinput').placeholder='Enter Your Comments';
 console.log('before opening request');
 request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?comment='+comment,true);
 console.log('request opened');
