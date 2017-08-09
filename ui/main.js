@@ -2,8 +2,7 @@ console.log('Loaded!');
 
 var onclick=function(obj){
     if(obj.value == 'Enter Your Comments')
-        //obj.value='';
-    document.getElementById('commentinput').value='';
+    document.getElementById('commentinput').value='';//obj.value='';
     console.log('Clicked!');
 };
 var element=document.getElementById('main-text');
