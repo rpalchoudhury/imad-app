@@ -1,14 +1,24 @@
 console.log('Loaded!');
 
-var onclick=function(obj){
-    if(document.getElementById('commentinput').value == 'Enter Your Comments')
+var onclick=function(){
+    if(document.getElementById('commentinput').placeholder == 'Enter Your Comments')
     {
         console.log('Inside if else Clicked!');
-    document.getElementById('commentinput').value='';//obj.value='';
+    //document.getElementById('commentinput').value='';//obj.value='';
+    document.getElementById('commentinput').placeholder='';
     }
-    //document.getElementById('commentinput').placeholder='';
     console.log('Outside if else Clicked!'+obj.value);
 };
+var onblur=function(){
+    if(document.getElementById('commentinput').value==='')
+    {
+        console.log('Inside if else blurred!');
+        document.getElementById('commentinput').placeholder='Enter Your Comments';
+    }
+    console.log('Outside if else, blurred!');
+    
+};
+
 var element=document.getElementById('main-text');
 element.innerHTML="My Name Is Rituparna";
 
