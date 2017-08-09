@@ -1,6 +1,9 @@
 console.log('Loaded!');
 
-var onclick=function(){document.getElementById('commentinput').value='';
+var onclick=function(text, _this){
+    if(text == _this.value)
+        _this.value = '';
+    //document.getElementById('commentinput').value='';
     console.log('Clicked!');
 };
 var element=document.getElementById('main-text');
