@@ -1,6 +1,6 @@
 console.log('Loaded!');
 
-var onclick=function(){document.getElementById('commentinput').text='';
+var onclick=function(){document.getElementById('commentinput').value='';
     console.log('Clicked!');
 };
 var element=document.getElementById('main-text');
