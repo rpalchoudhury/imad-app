@@ -6,6 +6,7 @@ var onclick=function(obj){
         console.log('Inside if else Clicked!');
     document.getElementById('commentinput').value='';//obj.value='';
     }
+    document.getElementById('commentinput').placeholder='';
     console.log('Outside if else Clicked!'+obj.value);
 };
 var element=document.getElementById('main-text');
