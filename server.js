@@ -11,7 +11,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var commentobj={comment:`
-        <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(this)"></input>
+        <input type="text" id="commentinput" value="Enter Your Comments" style="width:50%" onclick="onclick(this)"></input>
         <input type="submit" id="submit" value="Submit Your Comments"></input>
         <h4>Comments:-</h2>
         <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
