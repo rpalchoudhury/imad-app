@@ -4,8 +4,30 @@ var express = require('express');//express is the library imported to create web
 var morgan = require('morgan');//morgan is the library imported to help us output logs of the server, what requests coming to the server and how we //are responding,such lind of logs
 var path = require('path');
 
+//For connecting to database, you need to do npm i pg and make sure node-postgres is installed at minimum 6.0.0.
+var Pool=require('pg').Pool;
+
+var config={
+    user:'rpalchoudhury50',
+    database:'rpalchoudhury50',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password:process.env.DB.PASSWORD
+};
+
 var app = express();
 
+//create the pool somewhere globally so its lifetime
+//lasts for as long as your app is running
+var pool=new Pool(config);
+app.get('/test-db',function(req,res){
+    //Make a select request
+    //Return a response with the results
+    pool.query('SELECT * FROM article ',function(err,result){
+        if(err){  res.status(500).send(err.toString());  }
+        else{  res.send(JSON.stringify(result));   }
+    });
+});
 
 //below line tells the server to use morgan module with combined predefined format for logging, there are other predefined //formats like common, dev, short, tiny
 app.use(morgan('combined'));
