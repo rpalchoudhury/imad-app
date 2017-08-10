@@ -25,7 +25,7 @@ app.get('/test-db',function(req,res){
     //Return a response with the results
     pool.query('SELECT * FROM article ',function(err,result){
         if(err){  res.status(500).send(err.toString());  }
-        else{  res.send(JSON.stringify(result));   }
+        else{  res.send(JSON.stringify(result.rows));   }//you can display results also instead of result.rows
     });
 });
 
