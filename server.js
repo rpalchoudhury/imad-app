@@ -162,7 +162,8 @@ var articles={
 function createTemplate(data,commentobj){
     var title=data.title;
     var heading=data.heading;
-    var namendate=data.namendate;
+    //var namendate=data.namendate;
+    var date=data.date;
     var content= data.content;
     var comment=commentobj.comment;
     
@@ -181,7 +182,7 @@ var htmlTemplate=`
             <hr/>
             <div>
                 <h1>${heading}</h1>
-                <h5>${namendate}</h5>
+                <h5>${date.toDateString()}</h5>
                 
                 ${content}
             </div>
@@ -197,7 +198,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-
+/*
 app.get('/:articleName', function (req, res) {
     //Initially articles contained articleOne, articleTwo, articleThree, these were changed to article-one, article-two,
     //article-three respectively,and to remove syntax error, 'article-one','article-two','article-three' respectively,
@@ -208,6 +209,17 @@ app.get('/:articleName', function (req, res) {
     //articles[articleName]={} content object for article-one
     var articleName=req.params.articleName;
   res.send(createTemplate(articles[articleName],commentobj));
+});
+*/
+app.get('/articles/:articleName', function (req, res) {
+    
+    //SELECT * FROM app_article WHERE urlpathkeyword='article-one'
+    pool.query("SELECT * FROM app_article WHERE urlpathkeyword='"+req.params.articleName+"'",function(err,result){
+        if(err){ res.status(500).send(err.toString()); }
+        else if(result.rows.length===0){  res.status(404).send('Article Not Found'); }
+        else { var articleData=result.rows[0]; res.send(createTemplate(articleData,commentobj)); }
+    });
+    
 });
 
 /*//The below code section for mypage1 and mypage2 placed after '/:articleName' (declared above) is generating error
