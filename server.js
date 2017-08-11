@@ -33,7 +33,7 @@ app.get('/test-db',function(req,res){
 app.use(morgan('combined'));
 
 var commentobj={comment:`
-        <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick()"  onblur="onblur()"></input>
+        <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
         <input type="submit" id="submit" value="Submit Your Comments"></input>
         <h4>Comments:-</h2>
         <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
@@ -211,6 +211,7 @@ app.get('/:articleName', function (req, res) {
   res.send(createTemplate(articles[articleName],commentobj));
 });
 */
+
 app.get('/articles/:articleName', function (req, res) {
     
     //SELECT * FROM app_article WHERE urlpathkeyword='article-one'
