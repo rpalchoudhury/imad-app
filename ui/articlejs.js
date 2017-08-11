@@ -2,6 +2,7 @@ console.log('Loaded ArticleJS');
 var onclick=function(e){
     if(document.getElementById('commentinput').placeholder == 'Enter Your Comments')
     {
+        e.preventDefault();
         console.log('Inside if else Clicked!');
     //document.getElementById('commentinput').value='';//obj.value='';
     document.getElementById('commentinput').placeholder='';
@@ -12,6 +13,7 @@ var onclick=function(e){
 var onblur=function(e){
     if(document.getElementById('commentinput').value==='')
     {
+        e.preventDefault();
         console.log('Inside if else blurred!');
         document.getElementById('commentinput').placeholder='Enter Your Comments';
          e.stopImmediatePropagation();
