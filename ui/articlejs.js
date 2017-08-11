@@ -1,18 +1,20 @@
 console.log('Loaded ArticleJS');
-var onclick=function(){
+var onclick=function(e){
     if(document.getElementById('commentinput').placeholder == 'Enter Your Comments')
     {
         console.log('Inside if else Clicked!');
     //document.getElementById('commentinput').value='';//obj.value='';
     document.getElementById('commentinput').placeholder='';
+    e.stopImmediatePropagation();
     }
     console.log('Outside if else Clicked!');
 };
-var onblur=function(){
+var onblur=function(e){
     if(document.getElementById('commentinput').value==='')
     {
         console.log('Inside if else blurred!');
         document.getElementById('commentinput').placeholder='Enter Your Comments';
+         e.stopImmediatePropagation();
     }
     console.log('Outside if else, blurred!');
     
