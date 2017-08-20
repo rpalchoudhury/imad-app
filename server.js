@@ -7,6 +7,7 @@ var path = require('path');
 //For connecting to database, you need to do npm i pg and make sure node-postgres is installed at minimum 6.0.0.
 var Pool=require('pg').Pool;
 var crypto=require('crypto');
+var bodyParser=require('body-parser');
 
 var config={
     user:'rpalchoudhury50',
@@ -17,6 +18,8 @@ var config={
 };
 
 var app = express();
+//We need to tell our express app that "for every request, in case you see content type is jason, load the json content in the req.body variable.
+app.use(bodyParser.json());
 
 //create the pool somewhere globally so its lifetime
 //lasts for as long as your app is running
@@ -48,8 +51,9 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
-//create an entry in the user table, for that we require a hashed password, username, email, name
+//create an entry in the user table, for that we require a hashed password, username, email, name.Since this is a post request, //we can't just go to the browser and type in url/create-user, it would throw an error, we make a post request //XMLHttpRequest object for this endpoint API in main.js, like we did for counter or submit name, but instead of get we'll //make a post request.
 app.post('/create-user',function(req,res){
+    //We are assuming its a JSON request, if its a JSON request, we have to tell our express framework to look for these keys//(username, password, name, email) inside the request body, and this request body is going to be a JSON, for that we //need the body-parser which is an express library, that we import at the beginning.
     var dbUserName=req.body.username;
     var dbName=req.body.name;
     var dbEmail=req.body.email;
