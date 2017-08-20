@@ -114,7 +114,7 @@ request.send(null);
         console.log('inside onclick');
         var request=new XMLHttpRequest();
         request.onreadystatechange=function(){
-            if(request.status==XMLHttpRequest.DONE)
+            if(request.readyState==XMLHttpRequest.DONE)
             {
                 if(request.status==200)
                 {
