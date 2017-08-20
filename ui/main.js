@@ -109,7 +109,7 @@ request.send(null);
     }; 
     
     
-    var submit=document.getElementById('submit');
+    var submit=document.getElementById('submitt');
     submit.onclick=function(){
         console.log('inside onclick');
         var request=new XMLHttpRequest();
