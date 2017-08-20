@@ -29,8 +29,22 @@ app.get('/test-db',function(req,res){
     });
 });
 
+
 //below line tells the server to use morgan module with combined predefined format for logging, there are other predefined //formats like common, dev, short, tiny
 app.use(morgan('combined'));
+
+//hashing, security
+function hash(input, salt)
+{
+    //how do we create a hash?by using crypto.pbkdf2Sync(password, salt, iterations, keylen, digest),Provides a synchronous//Password-Based Key Derivation Function (PBKDF2) implementation. A selected HMAC digest algorithm specified by digest //is applied to derive a key of the requested byte length (keylen, which is a number) from the password(string), salt//(string) and iterations(number).digest is a string, denoting the algorithm. The below code is going to append the //salt to the input string(which we are entering at runtime) and use sha512 digest algorithm 10000 times and finally //arriving at a key of 512 bytes length.Each iteration is performed on the output obtained from previous step.
+    var hashed=crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return hashed.toString('hex');
+}
+
+app.get('/hash/:input',function(req,res){
+    var hashedString=hash(req.params.input,'this-is-some-random-salt-string');
+    res.send(hashedString);
+});
 
 var commentobj={comment:`
         <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
