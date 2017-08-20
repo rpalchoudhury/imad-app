@@ -107,6 +107,38 @@ request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/submit-name?name="
 request.send(null);
    
     }; 
+    
+    
+    var submit=document.getElementById('submit');
+    submit.onclick=function(){
+        var request=new XMLHttpRequest();
+        request.onreadystatechange=function(){
+            if(request.status==XMLHttpRequest.DONE)
+            {
+                if(request.status==200)
+                {
+                    alert('logged in successfully');
+                }
+                else if(request.status==403){
+                alert('username/password incorrect');
+            }
+            else if(request.status==500)
+            {
+                alert('something went wrong on the server');
+            }
+            }
+            
+        };
+        var username=document.getElementById('username');
+        var password=document.getElementById('password');
+        console.log(username);console.log(password);
+        request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/login",true);
+        request.send(JSON.stringify({username: username, password: password}));
+    };
+    
+    
+    
+    
     //console.log("Ritu:-"+list);
 
 //console.log(document.getElementById('buttoncount')); 
