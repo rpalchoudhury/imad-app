@@ -48,6 +48,23 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
+//create an entry in the user table, for that we require a hashed password, username, email, name
+app.post('/create-user',function(req,res){
+    var dbUserName=req.body.username;
+    var dbName=req.body.name;
+    var dbEmail=req.body.email;
+    var password=req.body.password;
+    var salt=crypto.getRandomBytes(128).toString('hex');
+    var dbPassword=hash(password,salt);
+    pool.query('INSERT INTO "user" (username,name,email,password) VALUES ($1,$2,$3,$4)',[dbUsername, dbName, dbEmail, dbPassword],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send("User successfully created:"+username);
+        }
+    });
+});
+
 var commentobj={comment:`
         <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
         <input type="submit" id="submit" value="Submit Your Comments"></input>
