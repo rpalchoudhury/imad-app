@@ -51,14 +51,14 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
-//create an entry in the user table, for that we require a hashed password, username, email, name.Since this is a post request, //we can't just go to the browser and type in url/create-user, it would throw an error, we make a post request //XMLHttpRequest object for this endpoint API in main.js, like we did for counter or submit name, but instead of get we'll //make a post request.
+//create an entry in the user table, for that we require a hashed password, username, email, name.Since this is a post request, //we can't just go to the browser and type in url/create-user, it would throw an error, we make a post request //XMLHttpRequest object for this endpoint API in main.js, like we did for counter or submit name, but instead of get we'll //make a post request. If we want to just test this API out, we use a tool called curl.
 app.post('/create-user',function(req,res){
     //We are assuming its a JSON request, if its a JSON request, we have to tell our express framework to look for these keys//(username, password, name, email) inside the request body, and this request body is going to be a JSON, for that we //need the body-parser which is an express library, that we import at the beginning.
     var dbUserName=req.body.username;
     var dbName=req.body.name;
     var dbEmail=req.body.email;
     var password=req.body.password;
-    var salt=crypto.getRandomBytes(128).toString('hex');
+    var salt=crypto.randomBytes(128).toString('hex');
     var dbPassword=hash(password,salt);
     pool.query('INSERT INTO "user" (username,name,email,password) VALUES ($1,$2,$3,$4)',[dbUsername, dbName, dbEmail, dbPassword],function(err,result){
         if(err){
