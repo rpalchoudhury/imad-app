@@ -111,6 +111,7 @@ request.send(null);
     
     var submit=document.getElementById('submit');
     submit.onclick=function(){
+        console.log('inside onclick');
         var request=new XMLHttpRequest();
         request.onreadystatechange=function(){
             if(request.status==XMLHttpRequest.DONE)
