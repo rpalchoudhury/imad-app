@@ -6,6 +6,7 @@ var path = require('path');
 
 //For connecting to database, you need to do npm i pg and make sure node-postgres is installed at minimum 6.0.0.
 var Pool=require('pg').Pool;
+var crypto=require('crypto');
 
 var config={
     user:'rpalchoudhury50',
