@@ -69,6 +69,32 @@ app.post('/create-user',function(req,res){
     });
 });
 
+//login using the data entered into the database, by fetching from the database
+app.get('/login',function(req,res){
+    var username=req.body.username;
+    var password=req.body.password;
+    pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else
+        { 
+            if(result.rows.length===0) { res.status(403).send("Username/Password is invalid"); } 
+            else
+           { //Match the password
+           var dbpasswrd=result.rows[0].password;//obtaining password stored against the username from result returned after //                                  //querying database
+           var salt=passwrd.split('$')[2];//splitting the password obtained above with '$' and obtaining the stored salt
+           var hashedPasswrd=hash(password,salt);//encrypting the password submitted by the user using the same salt
+           if(hashedPasswrd==dbpasswrd)//matching the hashed password with the one stored in hashed form in the database
+           {
+               res.send("User logged in successfully"+username);
+           }
+           else { res.status(403).send("Password is invalid"); }
+               
+           }
+        }
+    });
+});
+
 var commentobj={comment:`
         <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
         <input type="submit" id="submit" value="Submit Your Comments"></input>
