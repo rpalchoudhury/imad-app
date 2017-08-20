@@ -132,7 +132,7 @@ request.send(null);
         var username=document.getElementById('username').value;
         var password=document.getElementById('password').value;
         console.log(username);console.log(password);
-        request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/login",true);
+        request.open("POST","http://rpalchoudhury50.imad.hasura-app.io/login",true);
         request.send(JSON.stringify({username: username, password: password}));
     };
     
