@@ -93,6 +93,9 @@ app.post('/login',function(req,res){
            var hashedPasswrd=hash(password,salt);//encrypting the password submitted by the user using the same salt
            if(hashedPasswrd==dbpasswrd)//matching the hashed password with the one stored in hashed form in the database
            {
+               //We have to set the session value before sending the response(with res.send) from the server
+               req.session.auth ={userId: result.rows[0].id};
+               //With the above line of code, in the background what is happening is that the session library or the session //middleware is setting a cookie with a session id, that it is randomly generating, internally on the server //side it is mapping the session id to an object, this object contains a value called auth, auth contains //our userId object=> {auth:{userId}}, this information is maintained on the server side, all that a cookie //contains is a session id, the express library saves up this information as soon as the response is sent
                res.send("User logged in successfully"+username);
            }
            else { res.status(403).send("Password is invalid"); }
@@ -100,6 +103,16 @@ app.post('/login',function(req,res){
            }
         }
     });
+});
+
+//we can test the above generated session through an endpoint(which we can use in the browser) described below:-
+app.get('/check-login',function(req,res){
+    if(req.session&&req.session.auth&&req.session.auth.userId){
+        res.send('You are logged in: '+req.session.auth.userId.toString());
+    }esle
+    {
+        res.send('You are not logged in!!!');
+    }
 });
 
 var commentobj={comment:`
