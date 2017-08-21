@@ -8,6 +8,7 @@ var path = require('path');
 var Pool=require('pg').Pool;
 var crypto=require('crypto');
 var bodyParser=require('body-parser');
+var session=require('express-session');
 
 var config={
     user:'rpalchoudhury50',
@@ -20,6 +21,12 @@ var config={
 var app = express();
 //We need to tell our express app that "for every request, in case you see content type is jason, load the json content in the req.body variable.
 app.use(bodyParser.json());
+app.use(session({
+    //We are telling express('app') to use the session library. We need to pass 2 configurations, one is secret, which is a //value that it will use to encrypt the cokkies with, so setting to some random value for now. Then we also need to set //the age of the cookies
+    secret:'someRandomSecretValue',
+    cookie: { maxAge: 1000*60*60*24*30 }//all our cookies has been set to a age of a month, quite long lasting
+    
+}));
 
 //create the pool somewhere globally so its lifetime
 //lasts for as long as your app is running
