@@ -107,7 +107,7 @@ app.post('/login',function(req,res){
 
 //we can test the above generated session through an endpoint(which we can use in the browser) described below:-
 //Note:-every time you refresh this endpoint directly, it will say you are not logged in after the first time the endpoint is //run on the browser, because, all the session id and everything gets reset(only if you restart the server, otherwise not)
-//If you don't restart the server and refresh the endpoint, then the userId doesn't gets reset.
+//If you don't restart the server and refresh the endpoint, then the userId doesn't gets reset and lost.
 app.get('/check-login',function(req,res){
     if(req.session&&req.session.auth&&req.session.auth.userId){
         res.send('You are logged in: '+req.session.auth.userId.toString());
