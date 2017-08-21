@@ -73,7 +73,7 @@ app.post('/create-user',function(req,res){
 app.post('/login',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
-    pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
+    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else
@@ -82,7 +82,7 @@ app.post('/login',function(req,res){
             else
            { //Match the password
            var dbpasswrd=result.rows[0].password;//obtaining password stored against the username from result returned after //                                  //querying database
-           var salt=passwrd.split('$')[2];//splitting the password obtained above with '$' and obtaining the stored salt
+           var salt=dbpasswrd.split('$')[2];//splitting the password obtained above with '$' and obtaining the stored salt
            var hashedPasswrd=hash(password,salt);//encrypting the password submitted by the user using the same salt
            if(hashedPasswrd==dbpasswrd)//matching the hashed password with the one stored in hashed form in the database
            {
