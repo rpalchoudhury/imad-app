@@ -108,8 +108,9 @@ app.post('/login',function(req,res){
 //we can test the above generated session through an endpoint(which we can use in the browser) described below:-
 app.get('/check-login',function(req,res){
     if(req.session&&req.session.auth&&req.session.auth.userId){
+        console.log('You are looged in'+result.rows[0].username);
         res.send('You are logged in: '+req.session.auth.userId.toString());
-    }esle
+    }else
     {
         res.send('You are not logged in!!!');
     }
