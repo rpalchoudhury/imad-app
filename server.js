@@ -43,7 +43,7 @@ function hash(input, salt)
     //how do we create a hash?by using crypto.pbkdf2Sync(password, salt, iterations, keylen, digest),Provides a synchronous//Password-Based Key Derivation Function (PBKDF2) implementation. A selected HMAC digest algorithm specified by digest //is applied to derive a key of the requested byte length (keylen, which is a number) from the password(string), salt//(string) and iterations(number).digest is a string, denoting the algorithm. The below code is going to append the //salt to the input string(which we are entering at runtime) and use sha512 digest algorithm 10000 times and finally //arriving at a key of 512 bytes length.Each iteration is performed on the output obtained from previous step.
     var hashed=crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     //return hashed.toString('hex');
-    return ["pbkdf2Sync","10000",salt,hashed.toString('hex')].join('$');
+    return ["pbkdf2Sync","10000",salt,hashed.toString('hex')].join('$');//We are using hexadecimal encoding to convert the //returned sequence of bytes obtained from encrypting in previous step to readable and printable string format
 }
 
 app.get('/hash/:input',function(req,res){
