@@ -19,7 +19,8 @@
         </div><br>
       <div align="center"> 
             <input type="text" id="username" placeholder="Username" />
-            <input type="password" id="password" placeholder="Password" /><br><br>
+            <input type="password" id="password" placeholder="Password" />
+            <input type="hidden" id="logged" value="0" /><br><br>
             <input type="submit" id="submit" value="Submit" />
             <input type="submit" id="submit" value="Register" /><br><br>
         </div>
@@ -27,7 +28,13 @@
         <div id='main-text' class="center text-big bold">
         My Articles
         </div>
-        
+        <div style="width: 12%; height:30%; margin-left: auto; margin-right: auto;" align="left">
+        <ul id="articles">
+            <li><a href="">Article One</a></li>
+            <li><a href="">Article Two</a></li>
+            <li><a href="">Article Three</a></li>
+            </ul>
+        </div>
          <script type="text/javascript" src="/ui/main.js"></script>
          <br>
     </body>
