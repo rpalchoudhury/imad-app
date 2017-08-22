@@ -16,14 +16,14 @@ var onload=function(){
                 if(sessionvalue!="You are not logged in!!!")
                 {
                     comments_section.style.display="block";
-                    login.style.display="none";
+                    logintoview.style.display="none";
                     loggedField.value="1";console.log('Inside onload article page Session exists');
                     
                 }
                 else{
                     comments_section.style.display="none";loggedField.value="0";
-                    login.style.display="block";
-                    login.innerHTML="Please Login To View Comments";
+                    logintoview.style.display="block";
+                    logintoview.innerHTML="Please Login To View Comments";
                     console.log('Inside onload article page Session does not exist');
                 }
                 
