@@ -88,13 +88,11 @@ submitbutton.onclick=function(){
             {
                 console.log('status 200');
                 var comment=request.responseText;
-                console.log('comment received from responseText:-'+comment);
-                //var li = document.createElement('li');
+                var li = document.createElement('li');
                 console.log('new li node created');
-                //li.innerHTML=comment;
-                var list='<li>'+comment+'</li>';
+                li.innerHTML=comment;
                 console.log('li node innerHTML is set');
-                commentList.appendChild(list);
+                commentList.appendChild(li);
             }
         }
     };
