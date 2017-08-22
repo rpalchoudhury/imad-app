@@ -136,7 +136,7 @@ submitbutton.onclick=function(){
                 console.log('status 200');
                 var comment=request.responseText;
                 var paragraph = document.createElement('p');
-                console.log('new paragraph node created,textContent:-'+commentList.textContent+"HTML=>");
+                console.log('new paragraph node created,textContent:-'+commentList.textContent);
                 var textcontent=commentList.textContent;
                 if(textcontent=="Can't display comments..database getting updated...regret inconvenience caused.."||textcontent=="No comments exist for this article yet...")
                 {console.log('inside if replacing textContent');commentList.innerHTML="";commentList.textContent="";}
