@@ -27,18 +27,8 @@ app.use(session({
     
 }));
 
-//create the pool somewhere globally so its lifetime
-//lasts for as long as your app is running
+//create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
-app.get('/test-db',function(req,res){
-    //Make a select request
-    //Return a response with the results
-    pool.query('SELECT * FROM article ',function(err,result){
-        if(err){  res.status(500).send(err.toString());  }
-        else{  res.send(JSON.stringify(result.rows));   }//you can display results also instead of result.rows
-    });
-});
-
 
 //hashing, security
 function hash(input, salt)
@@ -48,10 +38,6 @@ function hash(input, salt)
     return ["pbkdf2Sync","10000",salt,hashed.toString('hex')].join('$');//We are using hexadecimal encoding to convert the //returned sequence of bytes obtained from encrypting in previous step to readable and printable string format
 }
 
-app.get('/hash/:input',function(req,res){
-    var hashedString=hash(req.params.input,'this-is-some-random-salt-string');
-    res.send(hashedString);
-});
 
 app.post('/create-user',function(req,res){
     var dbUserName=req.body.username;
@@ -120,52 +106,6 @@ var commentobj={comment:`
         <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
         <ul id="comments"></ul></div>`};
 
-var obj={
-    title:'An Example By Ritu',
-    heading:'Example',
-    content:`<p>
-    Hi, this is just a demo to show usage of a variable object, the object is getting passed to a function 'exampleDemo', and that function is getting called in app.send(), and contents passed to response object res.
-    </p>`
-    
-};
-
-function exampleDemo(data,commentobj)
-{
-    var title=data.title;
-    var heading=data.heading;
-    var content=data.content;
-    var comment=commentobj.comment;
-    var htmlTemplate=`
-    <html>
-    <head><title>${title}</title>
-    <link href="/ui/style.css" rel="stylesheet" />
-    <script type="text/javascript" src="/ui/main.js"></script>
-    </head>
-        <body>
-            <div class="container">
-            <div>
-                <a href="/">Home</a>
-            </div>
-            <hr/>
-            <div>
-                <h1>${heading}</h1>
-                ${content}
-            </div>
-            <div>${comment}</div>
-            </div><script type="text/javascript" src="/ui/articlejs.js"></script>
-        </body>
-</html>`;
-return htmlTemplate;
-}
-
-//Here we are sending a text to response object, res, not contents of any file
-app.get('/article-four', function (req, res) {
-  res.send('This is article four, sending just plain text to response object as a String through res.send(...)');
-});
-
-app.get('/article-five', function (req, res) {
-  res.send(exampleDemo(obj,commentobj));
-});
 
 var comments=[];
 app.get('/article-comment',function(req,res){
