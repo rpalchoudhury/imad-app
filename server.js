@@ -139,6 +139,16 @@ app.get('/article-comment',function(req,res){
     });
 });
 
+app.get('/loadcomments',function(req,res){
+    pool.query('SELECT * FROM "comments" WHERE article_id=$1',[currentArticle],function(err,result){
+        if(err) {res.status(500).send(err.toString());}
+        else { 
+            if(result.rows.length===0) { res.status(403).send("No comments exist for this article yet..."); } 
+            else { res.send(JSON.stringify(result));  }
+        }
+    });
+});
+
 function createTemplate(data,commentobj){
     var title=data.title;
     var heading=data.heading;
