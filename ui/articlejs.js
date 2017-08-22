@@ -4,7 +4,7 @@ var loggedField=document.getElementById('loggedinornot');
 var logintoview=document.getElementById('login');
 var submitbutton=document.getElementById('submit');//For comments submit
 var commentList=document.getElementById('comments');//For comments view
-var newnode="";
+var newnode="";var time="";var sessionvalue="";
 
 var onload=function(){
     console.log('Inside onload for article page');
@@ -15,7 +15,7 @@ var onload=function(){
         {
             if(request.status==200)
             {
-                var sessionvalue=request.responseText;
+                sessionvalue=request.responseText;
                 console.log("sessionvalue:-"+sessionvalue);
                 if(sessionvalue!="You are not logged in!!!")
                 {
@@ -55,7 +55,7 @@ var onload=function(){
                     commentuser=comments.row[i].username;
                     newnode = document.createElement('p');
                     console.log('new node created');
-                    newnode.innerHTML=''+comment+'<br>By&nbsp;&nbsp;'+commentuser+'&nbsp;&nbsp;&nbsp;at&nbsp;'+commenttime+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+commentdate;
+                    newnode.innerHTML=comment+'<br>By&nbsp;&nbsp;'+commentuser+'&nbsp;&nbsp;&nbsp;at&nbsp;'+commenttime+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+commentdate;
                     console.log('new node innerHTML is set');
                     commentList.appendChild(newnode);
                     
@@ -132,11 +132,13 @@ submitbutton.onclick=function(){
             {
                 console.log('status 200');
                 var comment=request.responseText;
-                var li = document.createElement('li');
-                console.log('new li node created');
-                li.innerHTML=comment;
-                console.log('li node innerHTML is set');
-                commentList.appendChild(li);
+                var paragraph = document.createElement('p');
+                console.log('new paragraph node created');
+                if(commentList.innerHTML=="Can't display comments..database getting updated...regret inconvenience caused.."||commentList.innerHTML=="No comments exist for this article yet...")
+                commentList.innerHTML="";
+                paragraph.innerHTML=comment+'<br>By&nbsp;&nbsp;'+sessionvalue+'&nbsp;&nbsp;&nbsp;at&nbsp;'+time+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+date;
+                console.log('paragraph node innerHTML is set');
+                commentList.appendChild(paragraph);
             }
         }
     };
@@ -145,7 +147,7 @@ submitbutton.onclick=function(){
 var comment=document.getElementById('commentinput').value;
 document.getElementById('commentinput').value='';
 document.getElementById('commentinput').placeholder='Enter Your Comments';
-console.log('before opening request');var time;
+console.log('before opening request');
 var today = new Date();var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
 var hrs=today.getHours();
 if(hrs>=0&&hrs<=12)
