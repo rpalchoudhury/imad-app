@@ -13,7 +13,7 @@ var onload=function(){
             if(request.status==200)
             {
                 var sessionvalue=request.responseText;
-                if(!sessionvalue.equals("You are not logged in!!!"))
+                if(sessionvalue!="You are not logged in!!!")
                 {
                     loggedField.value="1";
                     textField.innerHTML="Hi"+'&npsp;'+username;
