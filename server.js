@@ -115,7 +115,7 @@ app.get('/logout',function(req,res){
 
 
 var commentobj={comment:`
-        <div id="commentssection"><h4>Submit your comments:-</h4>
+        <div id="commentssection"><hr><h4>Submit your comments:-</h4>
         <TextArea rows="4" cols="50" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
         <input type="submit" id="submit" value="Submit Your Comments"></input> 
         </div>
