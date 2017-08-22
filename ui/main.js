@@ -15,10 +15,14 @@ var performLogout=function(){
                 {
                     loggedField.value="0";
                     alert('logged out successfully');
+                    textField.innerHTML="Login/Register to unlock awesome features";
                     loginnout.innerHTML=` <input type="text" id="username" placeholder="Username" />
                                           <input type="password" id="password" placeholder="Password" /><br><br>
                                           <input type="submit" id="login" value="Submit" />
                                           <input type="submit" id="register" value="Register" /><br><br>`;
+                    
+                    login.setAttribute('onclick', 'performLogin();');
+                    register.setAttribute('onclick', 'performRegistration();');
                 }
                 else if(request.status==500)
                 {
@@ -64,7 +68,8 @@ var onload=function(){
     
     //XMLHttpRequest For Login Endpoint
     console.log("login button:-"+login);
-    login.onclick=function(){
+    //login.onclick=function(){
+    var performLogin=function(){
         console.log('inside onclick login');
         var request=new XMLHttpRequest();
         request.onreadystatechange=function(){
@@ -101,7 +106,8 @@ var onload=function(){
     };
     
      //XMLHttpRequest For Register Endpoint
-    register.onclick=function(){
+    //register.onclick=function(){
+    var performRegistration=function(){
         console.log('inside onclick register');
         var request=new XMLHttpRequest();
         request.onreadystatechange=function(){
