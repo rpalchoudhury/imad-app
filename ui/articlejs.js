@@ -45,11 +45,14 @@ var onload=function(){
             {
                 if(commentrequest.status==200)
                 {
+                console.log("Inside status 200 for commentrequest");
                 comments=commentrequest.responseText;
                 comments=JSON.parse(comments);
                 for(var i=0;i<comments.rows.length;i++)
                 {
+                    console.log("Inside status 200 for commentrequest for loop"+comments);
                     temptext=comments.row[i].comment;
+                    console.log("Inside status 200 for commentrequest, temptext=>"+temptext);
                     commentdate=comments.row[i].date;
                     commenttime=comments.row[i].time;
                     commentuser=comments.row[i].username;
