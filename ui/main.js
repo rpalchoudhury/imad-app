@@ -98,7 +98,7 @@ var onload=function(){
     var loggedValue=loggedField.value;
     if(loggedValue==1||loggedValue=="1")
     {
-    console.log('inside onclick logout');
+    console.log('just inside onclick logout, loggedValue='+loggedValue);
     var logout=document.getElementById('logout');
     logout.onclick=function(){
         console.log('inside onclick logout');
