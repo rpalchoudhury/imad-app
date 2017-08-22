@@ -101,8 +101,15 @@ submitbutton.onclick=function(){
 var comment=document.getElementById('commentinput').value;
 document.getElementById('commentinput').value='';
 document.getElementById('commentinput').placeholder='Enter Your Comments';
-console.log('before opening request');
-request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?comment='+comment,true);
+console.log('before opening request');var time;
+var today = new Date();var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
+var hrs=today.getHours();
+if(hrs>=0&&hrs<=12)
+time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()+"AM";
+else
+time= today.getHours()-12 + ":" + today.getMinutes() + ":" + today.getSeconds()+"PM";
+console.log("Date:-"+date+"Time:-"+time);
+request.open('GET','http://rpalchoudhury50.imad.hasura-app.io/article-comment?comment='+comment+'&date='+date+'&time='+time,true);
 console.log('request opened');
 request.send(null);
 console.log('request sent');
