@@ -118,6 +118,9 @@ var onload=function(){
                 var reqmsg=request.responseText;
                 if(request.status==200)
                 {
+                    if(res.responseText=="User Already Exists...please login to continue...")
+                    alert(res.responseText);
+                    else
                     alert('registered successfully');
                 }
                 else if(request.status==500)
