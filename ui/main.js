@@ -21,6 +21,7 @@ var onload=function(){
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     logout=document.getElementById('logout');
+                    console.log("logoutbutton=>>"+logout);
                     
                 }
                 
