@@ -9,6 +9,7 @@ var Pool=require('pg').Pool;
 var crypto=require('crypto');
 var bodyParser=require('body-parser');
 var session=require('express-session');
+var currentArticle=0;
 
 var config={
     user:'rpalchoudhury50',
@@ -122,11 +123,17 @@ var commentobj={comment:`
         <ul id="comments"></ul></div></div>`};
 
 
-var comments=[];
 app.get('/article-comment',function(req,res){
     var comment=req.query.comment;
-    comments.push(comment);
-    res.send(JSON.stringify(comments));
+    var user_id=req.session.auth.userId;
+    var article_id=currentArticle;
+     pool.query('INSERT INTO "comments" (article_id, user_id, comment) VALUES ($1,$2,$3)', [article_id, user_id, comment], function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send("Comment entered in database successfully");
+        }
+    });
 });
 
 function createTemplate(data,commentobj){
@@ -171,7 +178,9 @@ app.get('/', function (req, res) {
 
 
 app.get('/articles/:articleName', function (req, res) {
-    
+    if(req.params.articleName=="article-one") currentArticle=1;
+    else if (req.params.articleName=="article-two") currentArticle=2;
+    else if (req.params.articleName=="article-three") currentArticle=3;
     pool.query("SELECT * FROM app_article WHERE urlpathkeyword=$1",[req.params.articleName],function(err,result){
         if(err){ res.status(500).send(err.toString()); }
         else if(result.rows.length===0){  res.status(404).send('Article Not Found'); }
