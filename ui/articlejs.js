@@ -144,7 +144,8 @@ submitbutton.onclick=function(){
                 if(textcontent!==""||textcontent!==null)
                 {
                 if(textcontent=="Can't display comments..database getting updated...regret inconvenience caused.."||textcontent=="No comments exist for this article yet...")
-                {console.log('inside if replacing textContent');commentList.innerHTML="";commentList.textContent="";}
+                {console.log('inside if replacing textContent');commentList.innerHTML="";commentList.textContent="";
+                textcontent="";}
                 }
                 paragraph.innerHTML=comment+'<br>By&nbsp;&nbsp;'+sessionvalue+'&nbsp;&nbsp;&nbsp;at&nbsp;'+time+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+date;
                 console.log('paragraph node innerHTML is set');
