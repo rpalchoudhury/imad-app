@@ -23,6 +23,8 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
     secret:'someRandomSecretValue',
+    resave: true,
+    saveUninitialized: false,
     cookie: { maxAge: 1000*60*60*24*30 }//all our cookies has been set to a age of a month, quite long lasting
     
 }));
