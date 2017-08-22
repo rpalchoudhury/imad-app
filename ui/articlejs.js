@@ -88,7 +88,8 @@ submitbutton.onclick=function(){
             {
                 console.log('status 200');
                 var comment=request.responseText;
-                var list='<li>'+comment+'</li>';
+                var li = document.createElement('li');
+                li.innerHTML=comment;
                 commentList.appendChild=list;
             }
         }
