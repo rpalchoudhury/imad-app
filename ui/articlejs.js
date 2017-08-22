@@ -13,6 +13,7 @@ var onload=function(){
             if(request.status==200)
             {
                 var sessionvalue=request.responseText;
+                console.log("sessionvalue:-"+sessionvalue);
                 if(sessionvalue!="You are not logged in!!!")
                 {
                     comments_section.style.display="block";
