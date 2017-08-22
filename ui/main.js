@@ -62,7 +62,8 @@ var onload=function(){
                     
                 }
                 else if(request.status==403){
-                alert('username/password incorrect');
+                    var text=request.responseText;
+                alert(text);
             }
             else if(request.status==500)
             {
