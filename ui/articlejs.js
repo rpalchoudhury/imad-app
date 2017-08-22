@@ -50,7 +50,7 @@ var onload=function(){
                 comments=JSON.parse(comments);
                 for(var i=0;i<comments.rows.length;i++)
                 {
-                    console.log("Inside status 200 for commentrequest for loop"+comments);
+                    console.log("Inside status 200 for commentrequest for loop"+comments+"No. of rows:-"+comments.rows.length);
                     temptext=comments.row[i].comment;
                     console.log("Inside status 200 for commentrequest, temptext=>"+temptext);
                     commentdate=comments.row[i].date;
