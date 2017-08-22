@@ -155,7 +155,7 @@ var htmlTemplate=`
                 
                 ${content}
             </div>
-            <div>${comment}</div>
+            <div><span id="login"></span>${comment}</div>
             </div><script type="text/javascript" src="/ui/articlejs.js"></script>
         </body>
 </html>`;
