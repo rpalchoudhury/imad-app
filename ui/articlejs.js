@@ -2,6 +2,9 @@ console.log('Loaded ArticleJS');
 var comments_section=document.getElementById('commentssection');
 var loggedField=document.getElementById('loggedinornot');
 var logintoview=document.getElementById('login');
+var submitbutton=document.getElementById('submit');//For comments submit
+var commentList=document.getElementById('comments');//For comments view
+var newnode="";
 
 var onload=function(){
     console.log('Inside onload for article page');
@@ -36,22 +39,41 @@ var onload=function(){
         request.send(null);
         
         //For loading comments:-
-        var commentrequest=new XMLHttpRequest();
+        var commentrequest=new XMLHttpRequest();var comments="",temptext="",commentdate="",commenttime="",commentuser="";
         commentrequest.onreadystatechange=function(){
             if(commentrequest.readyState==XMLHttpRequest.DONE)
             {
                 if(commentrequest.status==200)
                 {
-                var comments=commentrequest.responseText;
+                comments=commentrequest.responseText;
                 comments=JSON.parse(comments);
+                for(var i=0;i<comments.rows.length;i++)
+                {
+                    temptext=comments.row[i].comment;
+                    commentdate=comments.row[i].date;
+                    commenttime=comments.row[i].time;
+                    commentuser=comments.row[i].username;
+                    newnode = document.createElement('p');
+                    console.log('new node created');
+                    newnode.innerHTML=''+comment+'<br>By&nbsp;&nbsp;'+commentuser+'&nbsp;&nbsp;&nbsp;at&nbsp;'+commenttime+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+commentdate;
+                    console.log('new node innerHTML is set');
+                    commentList.appendChild(newnode);
+                    
+                }
                 }
                 else if(commentrequest.status==403)
                 {
                     comments=commentrequest.responseText;
+                    newnode = document.createElement('p');
+                    newnode.innerHTML=comments;
+                    commentList.appendChild(newnode);
                 }
                 else
                 {
                     comments="Can't display comments..database getting updated...regret inconvenience caused..";
+                    newnode = document.createElement('p');
+                    newnode.innerHTML=comments;
+                    commentList.appendChild(newnode);
                 }
             }
         };
@@ -84,8 +106,6 @@ var onblur=function(e){
     
 };
 //Comments section
-var submitbutton=document.getElementById('submit');
-var commentList=document.getElementById('comments');
 console.log(submitbutton);
 submitbutton.onclick=function(){
     console.log('inside submitbtn');
