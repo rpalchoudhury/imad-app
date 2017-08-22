@@ -2,6 +2,7 @@ console.log('Loaded!');
 var loggedField=document.getElementById('logged');
 var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
+var login=document.getElementById('login');
 
 var onload=function(){
     console.log('Inside onload index.html');
@@ -46,7 +47,6 @@ var onload=function(){
 
     
     //XMLHttpRequest For Login Endpoint
-    var login=document.getElementById('login');
     console.log("login button:-"+login);
     login.onclick=function(){
         console.log('inside onclick login');
