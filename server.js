@@ -157,8 +157,6 @@ app.get('/', function (req, res) {
 
 app.get('/articles/:articleName', function (req, res) {
     
-    //SELECT * FROM app_article WHERE urlpathkeyword='article-one'
-    //pool.query("SELECT * FROM app_article WHERE urlpathkeyword='"+req.params.articleName+"'",function(err,result){
     pool.query("SELECT * FROM app_article WHERE urlpathkeyword=$1",[req.params.articleName],function(err,result){
         if(err){ res.status(500).send(err.toString()); }
         else if(result.rows.length===0){  res.status(404).send('Article Not Found'); }
