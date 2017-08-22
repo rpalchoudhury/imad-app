@@ -68,6 +68,7 @@ var onload=function(){
                 {
                     comments=commentrequest.responseText;
                     newnode = document.createElement('p');
+                    newnode.id="nocomments";
                     newnode.innerHTML=comments;
                     commentList.appendChild(newnode);
                 }
@@ -75,6 +76,7 @@ var onload=function(){
                 {
                     comments="Can't display comments..database getting updated...regret inconvenience caused..";
                     newnode = document.createElement('p');
+                    newnode.id="nocomments";
                     newnode.innerHTML=comments;
                     commentList.appendChild(newnode);
                 }
@@ -137,7 +139,7 @@ submitbutton.onclick=function(){
                 var comment=request.responseText;
                 var paragraph = document.createElement('p');
                 console.log('new paragraph node created,textContent:-'+commentList.textContent);
-                var textcontent=commentList.textContent;
+                var textcontent=document.getElementById('nocomments').textContent;
                 if(textcontent=="Can't display comments..database getting updated...regret inconvenience caused.."||textcontent=="No comments exist for this article yet...")
                 {console.log('inside if replacing textContent');commentList.innerHTML="";commentList.textContent="";}
                 paragraph.innerHTML=comment+'<br>By&nbsp;&nbsp;'+sessionvalue+'&nbsp;&nbsp;&nbsp;at&nbsp;'+time+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+date;
