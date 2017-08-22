@@ -15,9 +15,12 @@ var onload=function(){
                 var sessionvalue=request.responseText;
                 if(!sessionvalue.equals("You are not logged in!!!"))
                 {
-                   loginnout.innerHTML='';
+                    loggedField.value="1";
+                    textField.innerHTML="Hi"+'&npsp;'+username;
+                    loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                 }
                 else{
+                    loggedField.value="0";
                     loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
                                         <input type="password" id="password" placeholder="Password" /><br><br>
                                         <input type="submit" id="login" value="Submit" />
@@ -26,6 +29,7 @@ var onload=function(){
             }else
             {
                 console.log('Inside onload, there is some problem in the server');
+                textField.innerHTML="Login/Register to unlock awesome features";
                 loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
                                     <input type="password" id="password" placeholder="Password" /><br><br>
                                     <input type="submit" id="login" value="Submit" />
