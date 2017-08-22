@@ -3,7 +3,7 @@ var loggedField=document.getElementById('logged');
 var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
 var login=document.getElementById('login');
-var register=document.getElementById('register');
+var register=document.getElementById('register');var logout;
 
 var onload=function(){
     console.log('Inside onload index.html');
@@ -20,6 +20,7 @@ var onload=function(){
                     loggedField.value="1";console.log('Inside onload index.html Session exists');
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
+                    logout=document.getElementById('logout');
                     
                 }
                 
@@ -99,7 +100,7 @@ var onload=function(){
     if(loggedValue==1||loggedValue=="1")
     {
     console.log('just inside onclick logout, loggedValue='+loggedValue);
-    var logout=document.getElementById('logout');
+    logout=document.getElementById('logout');
     logout.onclick=function(){
         console.log('inside onclick logout');
         var request=new XMLHttpRequest();
