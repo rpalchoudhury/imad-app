@@ -36,10 +36,10 @@ request.send(null);
     }; 
     
     //XMLHttpRequest For Login Endpoint
-    var submit=document.getElementById('submit');
+    var login=document.getElementById('login');
     var loggedfield=document.getElementById('logged');
-    submit.onclick=function(){
-        console.log('inside onclick');
+    login.onclick=function(){
+        console.log('inside onclick login');
         var request=new XMLHttpRequest();
         request.onreadystatechange=function(){
             if(request.readyState==XMLHttpRequest.DONE)
@@ -63,6 +63,33 @@ request.send(null);
         var password=document.getElementById('password').value;
         //console.log(username);console.log(password);
         request.open("POST","http://rpalchoudhury50.imad.hasura-app.io/login",true);
+        request.setRequestHeader('Content-Type','application/json');
+        request.send(JSON.stringify({username: username, password: password}));
+    };
+    
+     //XMLHttpRequest For Register Endpoint
+    var register=document.getElementById('register');
+    register.onclick=function(){
+        console.log('inside onclick register');
+        var request=new XMLHttpRequest();
+        request.onreadystatechange=function(){
+            if(request.readyState==XMLHttpRequest.DONE)
+            {
+                if(request.status==200)
+                {
+                    alert('registered successfully');
+                }
+                else if(request.status==500)
+                {
+                alert('something went wrong on the server,please wait for sometime to register again,sorry for inconvenience');
+                }
+            }
+            
+        };
+        var username=document.getElementById('username').value;
+        var password=document.getElementById('password').value;
+        //console.log(username);console.log(password);
+        request.open("POST","http://rpalchoudhury50.imad.hasura-app.io/create-user",true);
         request.setRequestHeader('Content-Type','application/json');
         request.send(JSON.stringify({username: username, password: password}));
     };
