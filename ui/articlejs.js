@@ -45,7 +45,7 @@ var onload=function(){
             {
                 if(commentrequest.status==200)
                 {
-                console.log("Inside status 200 for commentrequest");
+                console.log("Inside status 200 for commentrequest=>"+commentrequest.responseText);
                 comments=commentrequest.responseText;
                 comments=JSON.parse(comments);
                 for(var i=0;i<comments.rows.length;i++)
