@@ -115,12 +115,13 @@ app.get('/logout',function(req,res){
 
 
 var commentobj={comment:`
-        <div id="commentssection">
-        <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
-        <input type="submit" id="submit" value="Submit Your Comments"></input>
-        <h4>Comments:-</h2>
-        <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-        <ul id="comments"></ul></div></div>`};
+        <div id="commentssection"><h4>Submit your comments:-</h4>
+        <TextArea rows="4" cols="50" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
+        <input type="submit" id="submit" value="Submit Your Comments"></input> 
+        </div>
+        <h4>Comments:-</h4>
+        <div id="comments" style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
+        </div>`};
 
 
 app.get('/article-comment',function(req,res){
