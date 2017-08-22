@@ -15,12 +15,13 @@ var onload=function(){
                 var sessionvalue=request.responseText;
                 if(sessionvalue!="You are not logged in!!!")
                 {
-                    loggedField.value="1";
+                    loggedField.value="1";console.log('Inside onload index.html Session exists');
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                 }
                 else{
-                    loggedField.value="0";
+                    loggedField.value="0";console.log('Inside onload index.html session does not exist!!!');
+                    textField.innerHTML="Login/Register to unlock awesome features";
                     loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
                                         <input type="password" id="password" placeholder="Password" /><br><br>
                                         <input type="submit" id="login" value="Submit" />
