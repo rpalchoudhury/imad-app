@@ -22,6 +22,7 @@ var onload=function(){
                 }
                 else{
                     comments_section.style.display="none";loggedField.value="0";
+                    login.style.display="block";
                     login.innerHTML="Please Login To View Comments";
                     console.log('Inside onload article page Session does not exist');
                 }
