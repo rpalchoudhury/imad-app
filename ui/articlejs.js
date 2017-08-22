@@ -58,7 +58,7 @@ var onload=function(){
                     commentuser=comments.rows[i].username;
                     newnode = document.createElement('p');
                     console.log('new node created');
-                    newnode.innerHTML=comment+'<br>By&nbsp;&nbsp;'+commentuser+'&nbsp;&nbsp;&nbsp;at&nbsp;'+commenttime+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+commentdate;
+                    newnode.innerHTML=temptext+'<br>By&nbsp;&nbsp;'+commentuser+'&nbsp;&nbsp;&nbsp;at&nbsp;'+commenttime+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+commentdate;
                     console.log('new node innerHTML is set');
                     commentList.appendChild(newnode);
                     
