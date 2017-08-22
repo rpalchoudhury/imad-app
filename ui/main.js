@@ -50,7 +50,7 @@ var onload=function(){
                 if(sessionvalue!="You are not logged in!!!")
                 {
                     loggedField.value="1";console.log('Inside onload index.html Session exists');
-                    textField.innerHTML="Hi"+'&npsp;'+username;
+                    textField.innerHTML="Hi "+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     logout=document.getElementById('logout');
                     console.log("onload logoutbutton=>>"+logout);
