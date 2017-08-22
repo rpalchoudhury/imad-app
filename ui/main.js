@@ -109,7 +109,7 @@ var onload=function(){
     
     //XMLHttpRequest For Logout Endpoint
     var loggedValue=loggedField.value;
-    if(loggedValue==1||loggedValue.equals("1"))
+    if(loggedValue==1||loggedValue=="1")
     {
     var logout=document.getElementById('logout');
     logout.onclick=function(){
