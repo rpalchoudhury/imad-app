@@ -81,7 +81,7 @@ var onload=function(){
                 {
                     alert('logged in successfully');
                     loggedField.value="1";var username=request.responseText;
-                    textField.innerHTML="Hi"+'&npsp;'+username;
+                    textField.innerHTML="Hi"+'&nbsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     logout=document.getElementById('logout');
                     console.log(" after logged in logoutbutton=>>"+logout);
