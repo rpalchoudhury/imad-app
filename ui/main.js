@@ -4,6 +4,7 @@ var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
 var login=document.getElementById('login');
 var register=document.getElementById('register');var logout;
+var usernameHiddenField=document.getElementById('usernameexists');
 
 //XMLHttpRequest for Logout endpoint
 var performLogout=function(){
@@ -51,7 +52,7 @@ var onload=function(){
                 if(sessionvalue!="You are not logged in!!!")
                 {
                     loggedField.value="1";console.log('Inside onload index.html Session exists');
-                    textField.innerHTML="Hi "+username;
+                    textField.innerHTML="Hi "+sessionvalue;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     logout=document.getElementById('logout');
                     console.log("onload logoutbutton=>>"+logout);
