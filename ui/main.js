@@ -5,6 +5,7 @@ var loginnout=document.getElementById('loginnout');
 var login=document.getElementById('login');
 var register=document.getElementById('register');var logout;
 
+//XMLHttpRequest for Logout endpoint
 var performLogout=function(){
         console.log('inside onclick logout');
         var request=new XMLHttpRequest();
@@ -133,16 +134,7 @@ var onload=function(){
         request.send(JSON.stringify({username: username, password: password}));
     };
     
-    //XMLHttpRequest For Logout Endpoint
-    var loggedValue=loggedField.value;
-   // if(loggedValue==1||loggedValue=="1")
-    {
-    console.log('just inside onclick logout, loggedValue='+loggedValue);
-    logout=document.getElementById('logout');
-    
-    }
-    
-
+ 
 
 
 
