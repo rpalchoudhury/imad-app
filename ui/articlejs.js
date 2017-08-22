@@ -34,6 +34,30 @@ var onload=function(){
     
         request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/check-login",true);
         request.send(null);
+        
+        //For loading comments:-
+        var commentrequest=new XMLHttpRequest();
+        commentrequest.onreadystatechange=function(){
+            if(commentrequest.readyState==XMLHttpRequest.DONE)
+            {
+                if(commentrequest.status==200)
+                {
+                var comments=commentrequest.responseText;
+                comments=JSON.parse(comments);
+                }
+                else if(commentrequest.status==403)
+                {
+                    comments=commentrequest.responseText;
+                }
+                else
+                {
+                    comments="Can't display comments..database getting updated...regret inconvenience caused..";
+                }
+            }
+        };
+        
+        commentrequest.open("GET","http://rpalchoudhury50.imad.hasura-app.io/loadcomments",true);
+        commentrequest.send(null);
 };
 
 
