@@ -131,7 +131,7 @@ app.get('/article-comment',function(req,res){
         if(err){
             res.status(500).send(err.toString());
         }else{
-            res.send("Comment entered in database successfully");
+            res.send(comment);
         }
     });
 });
