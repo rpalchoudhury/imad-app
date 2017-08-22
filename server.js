@@ -64,10 +64,10 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else
         { 
-            if(result.rows.length===0) { res.status(403).send("Username/Password is invalid"); } 
+            if(result.rows.length===0) { res.status(403).send("Username does not exist, you need to register"); } 
             else
            { //Match the password
-           var dbpasswrd=result.rows[0].password;//obtaining password stored against the username from result returned after //                                  //querying database
+           var dbpasswrd=result.rows[0].password;
            var salt=dbpasswrd.split('$')[2];//splitting the password obtained above with '$' and obtaining the stored salt
            var hashedPasswrd=hash(password,salt);//encrypting the password submitted by the user using the same salt
            if(hashedPasswrd==dbpasswrd)//matching the hashed password with the one stored in hashed form in the database
@@ -76,7 +76,7 @@ app.post('/login',function(req,res){
                req.session.auth ={userId: result.rows[0].id};
                res.send("User logged in successfully"+username);
            }
-           else { res.status(403).send("Password is invalid"); }
+           else { res.status(403).send("Password is incorrect"); }
                
            }
         }
