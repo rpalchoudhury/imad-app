@@ -28,15 +28,16 @@ submitButton.onclick=function(){
     
     };    
     
-//Make a request to the server and send the name
+//Make a request to the server and send the name 
 var inputText=document.getElementById('name').value;
 request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/submit-name?name="+inputText,true);//this url shud match endpoint /submit-name in //server.js
 request.send(null);
    
     }; 
     
-    
+    //XMLHttpRequest For Login Endpoint
     var submit=document.getElementById('submit');
+    var loggedfield=document.getElementById('logged');
     submit.onclick=function(){
         console.log('inside onclick');
         var request=new XMLHttpRequest();
@@ -46,6 +47,7 @@ request.send(null);
                 if(request.status==200)
                 {
                     alert('logged in successfully');
+                    loggedField.value="1";
                 }
                 else if(request.status==403){
                 alert('username/password incorrect');
