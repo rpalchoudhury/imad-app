@@ -2,7 +2,8 @@ console.log('Loaded!');
 var loggedField=document.getElementById('logged');
 var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
-
+var login=document.getElementById('login');
+var register=document.getElementById('register');
 
 var onload=function(){
     console.log('Inside onload index.html');
@@ -21,27 +22,7 @@ var onload=function(){
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     
                 }
-                else{
-                    loggedField.value="0";console.log('Inside onload index.html session does not exist!!!');
-                    textField.innerHTML="Login/Register to unlock awesome features";
-                    loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
-                                        <input type="password" id="password" placeholder="Password" /><br><br>
-                                        <input type="submit" id="login" value="Submit" />
-                                        <input type="submit" id="register" value="Register" /><br><br>`;
-                    var login=document.getElementById('login');
-                    var register=document.getElementById('register');
-                }
-            }else
-            {
-                console.log('Inside onload, there is some problem in the server');
-                textField.innerHTML="Login/Register to unlock awesome features";
-                loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
-                                    <input type="password" id="password" placeholder="Password" /><br><br>
-                                    <input type="submit" id="login" value="Submit" />
-                                    <input type="submit" id="register" value="Register" /><br><br>`;
-                loggedField.value="0";
-                var login=document.getElementById('login');
-                var register=document.getElementById('register');
+                
             }
         }
     };
