@@ -137,8 +137,8 @@ submitbutton.onclick=function(){
                 var comment=request.responseText;
                 var paragraph = document.createElement('p');
                 console.log('new paragraph node created');
-                if(commentList.value=="Can't display comments..database getting updated...regret inconvenience caused.."||commentList.value=="No comments exist for this article yet...")
-                commentList.innerHTML="";
+                if(commentList.textContent=="Can't display comments..database getting updated...regret inconvenience caused.."||commentList.textContent=="No comments exist for this article yet...")
+                {console.log('inside if replacing textContent');commentList.innerHTML="";commentList.textContent="";}
                 paragraph.innerHTML=comment+'<br>By&nbsp;&nbsp;'+sessionvalue+'&nbsp;&nbsp;&nbsp;at&nbsp;'+time+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+date;
                 console.log('paragraph node innerHTML is set');
                 commentList.appendChild(paragraph);
