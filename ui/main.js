@@ -20,7 +20,8 @@ var performLogout=function(){
                                           <input type="password" id="password" placeholder="Password" /><br><br>
                                           <input type="submit" id="login" value="Submit" />
                                           <input type="submit" id="register" value="Register" /><br><br>`;
-                    
+                    login=document.getElementById('login');
+                    register=document.getElementById('register');
                     login.setAttribute('onclick', 'performLogin();');
                     register.setAttribute('onclick', 'performRegistration();');
                 }
