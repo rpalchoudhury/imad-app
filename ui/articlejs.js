@@ -87,12 +87,9 @@ submitbutton.onclick=function(){
             if(request.status==200)
             {
                 console.log('status 200');
-                var comments=request.responseText;
-                comments=JSON.parse(comments);var list='';
-                for(var i=0;i<comments.length;i++){
-                    list +='<li>'+comments[i]+'</li>';
-                }
-                commentList.innerHTML=list;
+                var comment=request.responseText;
+                var list='<li>'+comments+'</li>';
+                commentList.appendChild=list;
             }
         }
     };
