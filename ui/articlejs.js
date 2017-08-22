@@ -1,4 +1,37 @@
 console.log('Loaded ArticleJS');
+var comments_section=document.getElementById('commentssection');
+var loggedField=document.getElementById('loggedinornot');
+
+var onload=function(){
+    console.log('Inside onload for article page');
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
+    
+        if(request.readyState==XMLHttpRequest.DONE)
+        {
+            if(request.status==200)
+            {
+                var sessionvalue=request.responseText;
+                if(sessionvalue!="You are not logged in!!!")
+                {
+                    comments_section.style.display="block";
+                    loggedField.value="1";console.log('Inside onload article page Session exists');
+                    
+                }
+                else{
+                    comments_section.style.display="none";loggedField.value="0";
+                    console.log('Inside onload article page Session does not exist');
+                }
+                
+            }
+        }
+    };
+    
+        request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/check-login",true);
+        request.send(null);
+};
+
+
 var onclick=function(e){
     if(document.getElementById('commentinput').placeholder == 'Enter Your Comments')
     {
