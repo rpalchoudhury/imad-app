@@ -142,7 +142,7 @@ var htmlTemplate=`
     <link href="/ui/style.css" rel="stylesheet" />
     <script type="text/javascript" src="/ui/main.js"></script>
     </head>
-        <body>
+        <body onload="onload()">
             <div class="container">
             <!--margin: 0 auto -> automatic margin from left and right -->
             <div>
