@@ -127,7 +127,9 @@ app.get('/article-comment',function(req,res){
     var comment=req.query.comment;
     var user_id=req.session.auth.userId;
     var article_id=currentArticle;
-     pool.query('INSERT INTO "comments" (article_id, user_id, comment) VALUES ($1,$2,$3)', [article_id, user_id, comment], function(err,result){
+    var date=req.query.date;
+    var time=req.query.time;
+     pool.query('INSERT INTO "comments" (article_id, user_id, comment, date, time) VALUES ($1,$2,$3,$4,$5)', [article_id, user_id, comment, date, time], function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
