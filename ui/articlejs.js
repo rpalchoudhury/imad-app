@@ -27,7 +27,7 @@ var onload=function(){
                 else{
                     comments_section.style.display="none";loggedField.value="0";
                     logintoview.style.display="block";logintoview.style.fontWeight="bold";
-                    logintoview.innerHTML='<p>Please <a href="/">Login</a> To View Comments</p>';
+                    logintoview.innerHTML='<p>Please <a href="/">Login</a> To Enter Comments</p>';
                     console.log('Inside onload article page Session does not exist');
                 }
                 
