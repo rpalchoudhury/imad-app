@@ -2,7 +2,7 @@ console.log('Loaded!');
 var loggedField=document.getElementById('logged');
 var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
-var login=document.getElementById('login');
+
 
 var onload=function(){
     console.log('Inside onload index.html');
@@ -19,6 +19,7 @@ var onload=function(){
                     loggedField.value="1";console.log('Inside onload index.html Session exists');
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
+                    
                 }
                 else{
                     loggedField.value="0";console.log('Inside onload index.html session does not exist!!!');
@@ -27,6 +28,8 @@ var onload=function(){
                                         <input type="password" id="password" placeholder="Password" /><br><br>
                                         <input type="submit" id="login" value="Submit" />
                                         <input type="submit" id="register" value="Register" /><br><br>`;
+                    var login=document.getElementById('login');
+                    var register=document.getElementById('register');
                 }
             }else
             {
@@ -37,6 +40,8 @@ var onload=function(){
                                     <input type="submit" id="login" value="Submit" />
                                     <input type="submit" id="register" value="Register" /><br><br>`;
                 loggedField.value="0";
+                var login=document.getElementById('login');
+                var register=document.getElementById('register');
             }
         }
     };
@@ -83,7 +88,6 @@ var onload=function(){
     };
     
      //XMLHttpRequest For Register Endpoint
-    var register=document.getElementById('register');
     register.onclick=function(){
         console.log('inside onclick register');
         var request=new XMLHttpRequest();
