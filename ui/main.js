@@ -5,6 +5,29 @@ var loginnout=document.getElementById('loginnout');
 var login=document.getElementById('login');
 var register=document.getElementById('register');var logout;
 
+var performLogout=function(){
+        console.log('inside onclick logout');
+        var request=new XMLHttpRequest();
+        request.onreadystatechange=function(){
+            if(request.readyState==XMLHttpRequest.DONE)
+            {
+                if(request.status==200)
+                {
+                    loggedField.value="0";
+                    alert('logged out successfully');
+                }
+                else if(request.status==500)
+                {
+                alert('something went wrong on the server,please logout again,sorry for inconvenience');
+                }
+            }
+            
+        };
+        //Make the request for endpoint
+        request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/logout",true);
+        request.send(null);
+};
+
 var onload=function(){
     console.log('Inside onload index.html');
     var request=new XMLHttpRequest();
@@ -21,7 +44,8 @@ var onload=function(){
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     logout=document.getElementById('logout');
-                    console.log("logoutbutton=>>"+logout);
+                    console.log("onload logoutbutton=>>"+logout);
+                    logout.setAttribute('onclick', 'performLogout();');
                     
                 }
                 
@@ -49,7 +73,8 @@ var onload=function(){
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
                     logout=document.getElementById('logout');
-                    console.log("logoutbutton=>>"+logout);
+                    console.log(" after logged in logoutbutton=>>"+logout);
+                    logout.setAttribute('onclick', 'performLogout();');
                     
                 }
                 else if(request.status==403){
@@ -103,28 +128,7 @@ var onload=function(){
     {
     console.log('just inside onclick logout, loggedValue='+loggedValue);
     logout=document.getElementById('logout');
-    logout.onclick=function(){
-        console.log('inside onclick logout');
-        var request=new XMLHttpRequest();
-        request.onreadystatechange=function(){
-            if(request.readyState==XMLHttpRequest.DONE)
-            {
-                if(request.status==200)
-                {
-                    loggedField.value="0";
-                    alert('logged out successfully');
-                }
-                else if(request.status==500)
-                {
-                alert('something went wrong on the server,please logout again,sorry for inconvenience');
-                }
-            }
-            
-        };
-        //Make the request for endpoint
-        request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/logout",true);
-        request.send(null);
-    };
+    
     }
     
 
