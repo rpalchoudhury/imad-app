@@ -47,6 +47,7 @@ var onload=function(){
     
     //XMLHttpRequest For Login Endpoint
     var login=document.getElementById('login');
+    console.log("login button:-"+login);
     login.onclick=function(){
         console.log('inside onclick login');
         var request=new XMLHttpRequest();
