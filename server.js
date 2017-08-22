@@ -113,11 +113,12 @@ app.get('/logout',function(req,res){
 
 
 var commentobj={comment:`
+        <div id="commentssection">
         <input type="text" id="commentinput" placeholder="Enter Your Comments" style="width:50%" onclick="onclick(event)"  onblur="onblur(event)"></input>
         <input type="submit" id="submit" value="Submit Your Comments"></input>
         <h4>Comments:-</h2>
         <div style="width: auto; height:30%; margin-left: auto; margin-right: auto;" align="left">
-        <ul id="comments"></ul></div>`};
+        <ul id="comments"></ul></div></div>`};
 
 
 var comments=[];
@@ -149,7 +150,7 @@ var htmlTemplate=`
             </div>
             <hr/>
             <div>
-                <h1>${heading}</h1>
+                <h1>${heading}</h1><input type="hidden" id="loggedinornot" value="0" />
                 <h5>${date.toDateString()}</h5>
                 
                 ${content}
