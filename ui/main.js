@@ -48,7 +48,8 @@ var onload=function(){
                     loggedField.value="1";var username=request.responseText;
                     textField.innerHTML="Hi"+'&npsp;'+username;
                     loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
-                    
+                    logout=document.getElementById('logout');
+                    console.log("logoutbutton=>>"+logout);
                     
                 }
                 else if(request.status==403){
