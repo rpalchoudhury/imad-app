@@ -4,7 +4,39 @@ var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
 
 var onload=function(){
+    console.log('Inside onload index.html');
+    var request=new XMLHttpRequest();
+    request.onreadystatechange=function(){
     
+        if(request.readyState==XMLHttpRequest.DONE)
+        {
+            if(request.status==200)
+            {
+                var sessionvalue=request.responseText;
+                if(!sessionvalue.equals("You are not logged in!!!"))
+                {
+                   loginnout.innerHTML='';
+                }
+                else{
+                    loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
+                                        <input type="password" id="password" placeholder="Password" /><br><br>
+                                        <input type="submit" id="login" value="Submit" />
+                                        <input type="submit" id="register" value="Register" /><br><br>`;
+                }
+            }else
+            {
+                console.log('Inside onload, there is some problem in the server');
+                loginnout.innerHTML=`<input type="text" id="username" placeholder="Username" />
+                                    <input type="password" id="password" placeholder="Password" /><br><br>
+                                    <input type="submit" id="login" value="Submit" />
+                                    <input type="submit" id="register" value="Register" /><br><br>`;
+                loggedField.value="0";
+            }
+        }
+    };
+    
+        request.open("GET","http://rpalchoudhury50.imad.hasura-app.io/check-login",true);
+        request.send(null);
 };
 
     
