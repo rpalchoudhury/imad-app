@@ -15,6 +15,10 @@ var performLogout=function(){
                 {
                     loggedField.value="0";
                     alert('logged out successfully');
+                    loginnout.innerHTML=` <input type="text" id="username" placeholder="Username" />
+                                          <input type="password" id="password" placeholder="Password" /><br><br>
+                                          <input type="submit" id="login" value="Submit" />
+                                          <input type="submit" id="register" value="Register" /><br><br>`;
                 }
                 else if(request.status==500)
                 {
