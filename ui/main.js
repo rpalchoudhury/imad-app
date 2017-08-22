@@ -99,7 +99,7 @@ var onload=function(){
     
     //XMLHttpRequest For Logout Endpoint
     var loggedValue=loggedField.value;
-    if(loggedValue==1||loggedValue=="1")
+   // if(loggedValue==1||loggedValue=="1")
     {
     console.log('just inside onclick logout, loggedValue='+loggedValue);
     logout=document.getElementById('logout');
