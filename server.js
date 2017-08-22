@@ -44,6 +44,14 @@ function hash(input, salt)
 app.post('/create-user',function(req,res){
     var dbUserName=req.body.username;
     var password=req.body.password;
+    pool.query('SELECT * FROM "user" WHERE username = $1',[dbUserName],function(err,result){
+        if(err)
+        {
+            res.status(500).send(err.toString());
+        }
+        else{
+    if(result.rows.length===0)
+    {
     var salt=crypto.randomBytes(128).toString('hex');
     var dbPassword=hash(password,salt);
     pool.query('INSERT INTO "user" (username, password) VALUES ($1,$2)',[dbUserName, dbPassword],function(err,result){
@@ -53,8 +61,13 @@ app.post('/create-user',function(req,res){
             res.send("User successfully created:"+dbUserName);
         }
     });
+  }
+  else{
+      res.send("User Already Exists...please login to continue...");
+  }
+ }
 });
-
+});
 //login using the data entered into the database, by fetching from the database
 app.post('/login',function(req,res){
     var username=req.body.username;
