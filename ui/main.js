@@ -4,7 +4,6 @@ var textField=document.getElementById('loginsection');
 var loginnout=document.getElementById('loginnout');
 var login=document.getElementById('login');
 var register=document.getElementById('register');var logout;
-var usernameHiddenField=document.getElementById('usernameexists');
 
 //XMLHttpRequest for Logout endpoint
 var performLogout=function(){
