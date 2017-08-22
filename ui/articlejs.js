@@ -51,11 +51,11 @@ var onload=function(){
                 for(var i=0;i<comments.rows.length;i++)
                 {
                     console.log("Inside status 200 for commentrequest for loop"+comments+"No. of rows:-"+comments.rows.length);
-                    temptext=comments.row[i].comment;
+                    temptext=comments.rows[i].comment;
                     console.log("Inside status 200 for commentrequest, temptext=>"+temptext);
-                    commentdate=comments.row[i].date;
-                    commenttime=comments.row[i].time;
-                    commentuser=comments.row[i].username;
+                    commentdate=comments.rows[i].date;
+                    commenttime=comments.rows[i].time;
+                    commentuser=comments.rows[i].username;
                     newnode = document.createElement('p');
                     console.log('new node created');
                     newnode.innerHTML=comment+'<br>By&nbsp;&nbsp;'+commentuser+'&nbsp;&nbsp;&nbsp;at&nbsp;'+commenttime+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+commentdate;
