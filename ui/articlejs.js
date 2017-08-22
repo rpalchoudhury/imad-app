@@ -4,7 +4,7 @@ var loggedField=document.getElementById('loggedinornot');
 var logintoview=document.getElementById('login');
 var submitbutton=document.getElementById('submit');//For comments submit
 var commentList=document.getElementById('comments');//For comments view
-var newnode="";var time="";var sessionvalue="";
+var newnode="";var time="";var sessionvalue=""; var textcontent="";
 
 var onload=function(){
     console.log('Inside onload for article page');
@@ -71,6 +71,7 @@ var onload=function(){
                     newnode.id="nocomments";
                     newnode.innerHTML=comments;
                     commentList.appendChild(newnode);
+                    textcontent=document.getElementById('nocomments').textContent;
                 }
                 else
                 {
@@ -79,6 +80,7 @@ var onload=function(){
                     newnode.id="nocomments";
                     newnode.innerHTML=comments;
                     commentList.appendChild(newnode);
+                    textcontent=document.getElementById('nocomments').textContent;
                 }
             }
         };
@@ -138,10 +140,12 @@ submitbutton.onclick=function(){
                 console.log('status 200');
                 var comment=request.responseText;
                 var paragraph = document.createElement('p');
-                console.log('new paragraph node created,textContent:-'+commentList.textContent);
-                var textcontent=document.getElementById('nocomments').textContent;
+                //var textcontent=document.getElementById('nocomments').textContent;
+                if(textcontent!==""||textcontent!==null)
+                {
                 if(textcontent=="Can't display comments..database getting updated...regret inconvenience caused.."||textcontent=="No comments exist for this article yet...")
                 {console.log('inside if replacing textContent');commentList.innerHTML="";commentList.textContent="";}
+                }
                 paragraph.innerHTML=comment+'<br>By&nbsp;&nbsp;'+sessionvalue+'&nbsp;&nbsp;&nbsp;at&nbsp;'+time+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+date;
                 console.log('paragraph node innerHTML is set');
                 commentList.appendChild(paragraph);
