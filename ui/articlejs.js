@@ -137,7 +137,7 @@ submitbutton.onclick=function(){
                 var comment=request.responseText;
                 var paragraph = document.createElement('p');
                 console.log('new paragraph node created');
-                if(commentList.innerHTML=="Can't display comments..database getting updated...regret inconvenience caused.."||commentList.innerHTML=="No comments exist for this article yet...")
+                if(commentList.value=="Can't display comments..database getting updated...regret inconvenience caused.."||commentList.value=="No comments exist for this article yet...")
                 commentList.innerHTML="";
                 paragraph.innerHTML=comment+'<br>By&nbsp;&nbsp;'+sessionvalue+'&nbsp;&nbsp;&nbsp;at&nbsp;'+time+'&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;'+date;
                 console.log('paragraph node innerHTML is set');
