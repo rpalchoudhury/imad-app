@@ -1,6 +1,7 @@
 console.log('Loaded ArticleJS');
 var comments_section=document.getElementById('commentssection');
 var loggedField=document.getElementById('loggedinornot');
+var logintoview=document.getElementById('login');
 
 var onload=function(){
     console.log('Inside onload for article page');
@@ -15,12 +16,13 @@ var onload=function(){
                 if(sessionvalue!="You are not logged in!!!")
                 {
                     comments_section.style.display="block";
+                    login.style.display="none";
                     loggedField.value="1";console.log('Inside onload article page Session exists');
                     
                 }
                 else{
                     comments_section.style.display="none";loggedField.value="0";
-                    comments_section.innerHTML="Please Login To View Comments";
+                    login.innerHTML="Please Login To View Comments";
                     console.log('Inside onload article page Session does not exist');
                 }
                 
