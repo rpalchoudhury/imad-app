@@ -1,6 +1,11 @@
 console.log('Loaded!');
 var loggedField=document.getElementById('logged');
+var textField=document.getElementById('loginsection');
+var loginnout=document.getElementById('loginnout');
 
+var onload=function(){
+    
+};
 
     
     //XMLHttpRequest For Login Endpoint
@@ -14,7 +19,11 @@ var loggedField=document.getElementById('logged');
                 if(request.status==200)
                 {
                     alert('logged in successfully');
-                    loggedField.value="1";
+                    loggedField.value="1";var username=request.responseText;
+                    textField.innerHTML="Hi"+'&npsp;'+username;
+                    loginnout.innerHTML='<br><input type="submit" id="logout" value="Logout" />';
+                    
+                    
                 }
                 else if(request.status==403){
                 alert('username/password incorrect');
