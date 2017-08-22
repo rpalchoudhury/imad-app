@@ -115,6 +115,7 @@ var onload=function(){
         request.onreadystatechange=function(){
             if(request.readyState==XMLHttpRequest.DONE)
             {
+                var reqmsg=request.responseText;
                 if(request.status==200)
                 {
                     alert('registered successfully');
@@ -123,6 +124,7 @@ var onload=function(){
                 {
                 alert('something went wrong on the server,please wait for sometime to register again,sorry for inconvenience');
                 }
+                console.log("Ritu:-"+reqmsg);
             }
             
         };
