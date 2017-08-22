@@ -23,8 +23,8 @@ var onload=function(){
                 else{
                     comments_section.style.display="none";loggedField.value="0";
                     logintoview.style.display="block";
-                    logintoview.style.fontWeight="bold";
                     logintoview.innerHTML="Please <a href="/">Login</a> To View Comments";
+                    logintoview.style.fontWeight="bold";
                     console.log('Inside onload article page Session does not exist');
                 }
                 
