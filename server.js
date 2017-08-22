@@ -87,6 +87,7 @@ app.post('/login',function(req,res){
            {
                //We have to set the session value before sending the response(with res.send) from the server
                req.session.auth ={userId: result.rows[0].id};
+               req.session.auth ={userName: result.rows[0].username};
                res.send(username);
            }
            else { res.status(403).send("Password is incorrect"); }
@@ -98,7 +99,7 @@ app.post('/login',function(req,res){
 
 app.get('/check-login',function(req,res){
     if(req.session&&req.session.auth&&req.session.auth.userId){
-        res.send(req.session.auth.userId.toString());
+        res.send(req.session.auth.userName.toString());
     }else
     {
         res.send('You are not logged in!!!');
