@@ -67,9 +67,9 @@ app.post('/create-user',function(req,res){
         }else{
             if(devicename=="Android")
                {
-                   var user={message: "User successfully created:"+dbUserName.toString()};
+                   var user1={message: "User successfully created:"+dbUserName};
                    //username="{\"message\": \""+username.toString()+"\"}";
-                   res.send(JSON.stringify(user));
+                   res.send(JSON.stringify(user1));
                }else
             res.send("User successfully created:"+dbUserName);
         }
@@ -78,8 +78,8 @@ app.post('/create-user',function(req,res){
   else{
       if(devicename=="Android")
                {
-                   var user={message: "User Already Exists...please login to continue..."};
-                   res.send(JSON.stringify(user));
+                   var user2={message: "User Already Exists...please login to continue..."};
+                   res.send(JSON.stringify(user2));
                }else
       res.send("User Already Exists...please login to continue...");
   }
