@@ -80,7 +80,7 @@ app.post('/create-user',function(req,res){
       if(devicename=="Android")
                {
                    var user2={error: "User Already Exists...please login to continue..."};
-                   res.send(JSON.stringify(user2));
+                   res.status(403).send(JSON.stringify(user2));
                }else
       res.send("User Already Exists...please login to continue...");
   }
