@@ -60,7 +60,7 @@ app.post('/create-user',function(req,res){
         if(err){
              if(devicename=="Android")
                {
-                   var errmsg={message: err.toString()};
+                   var errmsg={error: err.toString()};
                    res.send(JSON.stringify(errmsg));
                }else
             res.status(500).send(err.toString());
@@ -78,7 +78,7 @@ app.post('/create-user',function(req,res){
   else{
       if(devicename=="Android")
                {
-                   var user2={message: "User Already Exists...please login to continue..."};
+                   var user2={error: "User Already Exists...please login to continue..."};
                    res.send(JSON.stringify(user2));
                }else
       res.send("User Already Exists...please login to continue...");
