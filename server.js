@@ -33,6 +33,29 @@ app.use(session({
 //create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
 
+var array[];
+app.get('/get-articles',function(req,res){
+    pool.query('SELECT * FROM app_article');
+    if(err)
+    {
+        res.status(500).send(err.toString());
+    }
+    else{
+        if(result.rows.length===0) res.status(403).send("No articles found");
+        else{
+            for(var i=0;i<result.rows.length;i++)
+        {
+            
+            var id=result.rows[i].id;var title=result.rows[i].title;var heading=result.rows[i].heading;
+            var date=result.rows[i].date; var content=result.rows[i].content;
+            array[i]={ "id":id, "title":title, "heading":heading, "date":date, "content":content };
+        }    
+        res.send(JSON.stringify(array));
+        }
+        
+    }
+});
+
 //hashing, security
 function hash(input, salt)
 {
