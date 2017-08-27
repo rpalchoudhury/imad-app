@@ -73,7 +73,7 @@ app.post('/create-user',function(req,res){
 app.post('/login',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
-    var headername=req.headers('device');
+    var devicename=req.headers('Device');
     pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err,result){
         if(err){
             res.status(500).send(err.toString());
@@ -90,7 +90,12 @@ app.post('/login',function(req,res){
                //We have to set the session value before sending the response(with res.send) from the server
                //req.session.auth ={userId: result.rows[0].id};
                req.session.auth ={userId: result.rows[0].id, userName: result.rows[0].username};
-               res.status(200).send(username.toString());
+               if(devicename=="Android")
+               {
+                   username="{\"username\": \""+username.toString()+"\"}";
+                   res.send(username);
+               }else
+               res.status(200).send(username);
            }
            else { res.status(403).send("Password is incorrect"); }
                
