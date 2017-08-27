@@ -45,6 +45,7 @@ function hash(input, salt)
 app.post('/create-user',function(req,res){
     var dbUserName=req.body.username;
     var password=req.body.password;
+    var devicename=req.header('Device');
     pool.query('SELECT * FROM "user" WHERE username = $1',[dbUserName],function(err,result){
         if(err)
         {
@@ -57,13 +58,29 @@ app.post('/create-user',function(req,res){
     var dbPassword=hash(password,salt);
     pool.query('INSERT INTO "user" (username, password) VALUES ($1,$2)',[dbUserName, dbPassword],function(err,result){
         if(err){
+             if(devicename=="Android")
+               {
+                   var errmsg={message: err.toString()};
+                   res.send(JSON.stringify(errmsg));
+               }else
             res.status(500).send(err.toString());
         }else{
-            res.send("User successfully created:"+dbUserName.toString());
+            if(devicename=="Android")
+               {
+                   var user={message: "User successfully created:"+dbUserName.toString()};
+                   //username="{\"message\": \""+username.toString()+"\"}";
+                   res.send(JSON.stringify(user));
+               }else
+            res.send("User successfully created:"+dbUserName);
         }
     });
   }
   else{
+      if(devicename=="Android")
+               {
+                   var user={message: "User Already Exists...please login to continue..."};
+                   res.send(JSON.stringify(user));
+               }else
       res.send("User Already Exists...please login to continue...");
   }
  }
