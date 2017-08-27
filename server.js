@@ -33,7 +33,7 @@ app.use(session({
 //create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
 
-var array[];
+var array=[];
 app.get('/get-articles',function(req,res){
     pool.query('SELECT * FROM app_article');
     if(err)
