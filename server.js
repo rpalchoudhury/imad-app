@@ -35,7 +35,7 @@ var pool=new Pool(config);
 
 var array=[];var temparray;
 app.get('/get-articles',function(req,res){
-    pool.query('SELECT * FROM app_article');
+    pool.query('SELECT * FROM app_article',function(err,result){
     if(err)
     {
         res.status(500).send(err.toString());
@@ -55,6 +55,7 @@ app.get('/get-articles',function(req,res){
         }
         
     }
+    });
 });
 
 //hashing, security
