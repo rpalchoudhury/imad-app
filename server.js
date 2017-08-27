@@ -67,7 +67,8 @@ app.post('/create-user',function(req,res){
         }else{
             if(devicename=="Android")
                {
-                   var user1={message: "User successfully created:"+dbUserName};
+                   var xx="User successfully created:"+dbUserName;
+                   var user1={message: xx};
                    //username="{\"message\": \""+username.toString()+"\"}";
                    res.send(JSON.stringify(user1));
                }else
