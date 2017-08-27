@@ -59,7 +59,7 @@ app.post('/create-user',function(req,res){
         if(err){
             res.status(500).send(err.toString());
         }else{
-            res.send("User successfully created:"+dbUserName);
+            res.send("User successfully created:"+dbUserName.toString());
         }
     });
   }
@@ -89,7 +89,7 @@ app.post('/login',function(req,res){
                //We have to set the session value before sending the response(with res.send) from the server
                //req.session.auth ={userId: result.rows[0].id};
                req.session.auth ={userId: result.rows[0].id, userName: result.rows[0].username};
-               res.status(200).send(username);
+               res.status(200).send(username.toString());
            }
            else { res.status(403).send("Password is incorrect"); }
                
