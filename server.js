@@ -33,7 +33,7 @@ app.use(session({
 //create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
 
-var array=[];var temparray;
+var array=[];var temparray;var counting=0;
 app.get('/get-articles',function(req,res){
     pool.query('SELECT * FROM app_article',function(err,result){
     if(err)
@@ -49,9 +49,9 @@ app.get('/get-articles',function(req,res){
             var id=result.rows[i].id;var title=result.rows[i].title;var heading=result.rows[i].heading;
             var date=result.rows[i].date; var content=result.rows[i].content;
             temparray={ "id":id, "title":title, "heading":heading, "date":date, "content":content };
-            array.push(temparray);
+            if(counting===0)array.push(temparray);
         }    
-        res.send(JSON.stringify(array));
+        res.send(JSON.stringify(array));counting=1;
         }
         
     }
