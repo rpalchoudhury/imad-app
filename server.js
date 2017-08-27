@@ -92,7 +92,7 @@ app.post('/login',function(req,res){
                req.session.auth ={userId: result.rows[0].id, userName: result.rows[0].username};
                if(devicename=="Android")
                {
-                   username="{\"username\": \""+username.toString()+"\"}";
+                   username="{\"message\": \""+username.toString()+"\"}";
                    res.send(username);
                }else
                res.status(200).send(username);
