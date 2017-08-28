@@ -52,7 +52,7 @@ app.get('/get-articles',function(req,res){
             });
             var id=result.rows[i].id;var title=result.rows[i].title;var heading=result.rows[i].heading;
             var date=result.rows[i].date; var content=result.rows[i].content;
-            temparray={ "id":id, "title":title, "heading":heading, "date":date, "content":content };
+            temparray={ "id":id, "title":title, "heading":heading, "date":date, "content":content, "name":name };
             if(counting===0)array.push(temparray);
         }    
         res.send(JSON.stringify(array));counting=1;
