@@ -35,7 +35,7 @@ var pool=new Pool(config);
 
 var array=[];var temparray;var counting=0;
 app.get('/get-articles',function(req,res){
-    pool.query('SELECT app_article.id,app_article.title,app_article.heading,app_article.content,app_article.date,user.username FROM app_article,user WHERE app_article.user_id=user.id',function(err,result){
+    pool.query('SELECT app_article.id, app_article.title, app_article.heading, app_article.content, app_article.date, usertable.username FROM app_article,usertable WHERE app_article.user_id=usertable.id',function(err,result){
     if(err)
     {
         res.status(500).send(err.toString());
