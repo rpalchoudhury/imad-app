@@ -82,7 +82,7 @@ app.post('/create-user',function(req,res){
     {
     var salt=crypto.randomBytes(128).toString('hex');
     var dbPassword=hash(password,salt);
-    pool.query('INSERT INTO "user" (username, password) VALUES ($1,$2)',[dbUserName, dbPassword],function(err,result){
+    pool.query('INSERT INTO usertable (username, password) VALUES ($1,$2)',[dbUserName, dbPassword],function(err,result){
         if(err){
              if(devicename=="Android")
                {
