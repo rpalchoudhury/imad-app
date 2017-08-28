@@ -43,9 +43,16 @@ app.get('/get-articles',function(req,res){
     else{
         if(result.rows.length===0) res.status(403).send("No articles found");
         else{
+            
             for(var i=0;i<result.rows.length;i++)
         {
-            
+            pool.query('SELECT username FROM user WHERE id=result.row[i].id',function(err,result){
+                if(err)
+                {
+                 res.status(500).send(err.toString());
+                }
+                else {var name=result.rows[0].username;}
+            });
             var id=result.rows[i].id;var title=result.rows[i].title;var heading=result.rows[i].heading;
             var date=result.rows[i].date; var content=result.rows[i].content;
             temparray={ "id":id, "title":title, "heading":heading, "date":date, "content":content };
