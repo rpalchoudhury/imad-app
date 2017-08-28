@@ -46,7 +46,7 @@ app.get('/get-articles',function(req,res){
             
             for(var i=0;i<result.rows.length;i++)
         {
-            pool.query('SELECT username FROM user WHERE id=result.row[i].user_id',function(err,result){
+            pool.query('SELECT username FROM user WHERE id=$1',[result.row[i].user_id],function(err,result){
                
                 {uname=result.rows[0].username;}
             });
