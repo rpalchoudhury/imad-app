@@ -72,7 +72,7 @@ app.post('/create-user',function(req,res){
     var dbUserName=req.body.username;
     var password=req.body.password;
     var devicename=req.header('Device');
-    pool.query('SELECT * FROM "user" WHERE username = $1',[dbUserName],function(err,result){
+    pool.query('SELECT * FROM usertable WHERE username = $1',[dbUserName],function(err,result){
         if(err)
         {
             res.status(500).send(err.toString());
@@ -118,7 +118,7 @@ app.post('/login',function(req,res){
     var username=req.body.username;
     var password=req.body.password;
     var devicename=req.header('Device');
-    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err,result){
+    pool.query('SELECT * FROM usertable WHERE username = $1', [username], function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else
