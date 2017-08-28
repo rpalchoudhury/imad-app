@@ -46,9 +46,9 @@ app.get('/get-articles',function(req,res){
             
             for(var i=0;i<result.rows.length;i++)
         {
-            pool.query('SELECT username FROM user WHERE id=$1',[result.row[i].user_id],function(err,result){
+            pool.query('SELECT username FROM user WHERE id=$1',[result.rows[i].user_id],function(err,result1){
                
-                {uname=result.rows[0].username;}
+                {uname=result1.rows[0].username;}
             });
             var id=result.rows[i].id;var title=result.rows[i].title;var heading=result.rows[i].heading;
             var date=result.rows[i].date; var content=result.rows[i].content;
