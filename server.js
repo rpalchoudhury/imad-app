@@ -160,7 +160,13 @@ app.get('/check-login',function(req,res){
 
 //logout endpoint that deletes the auth object, does not store the session id anymore
 app.get('/logout',function(req,res){
+   var devicename=req.header('Device');
    delete req.session.auth;
+   if(devicename=="Android")
+               {
+                   var user={message: "Logged out successfully"};
+                   res.send(JSON.stringify(user));
+               }else
    res.send('Logged out successfully');
 });
 
