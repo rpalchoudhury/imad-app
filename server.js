@@ -59,7 +59,7 @@ app.get('/get-articles',function(req,res){
         {
             var comment=result.rows[j].comment;var cdate=result.rows[j].cdate;var time=result.rows[j].time;
             var cid=result.rows[j].cid;var cusername=result.rows[j].cusername;var app_article=result.rows[j].id;
-            temparray={"comment":comment, "cdate":cdate, "time":time, "cid":cid, "cusername":cusername, "app_article":app_article};
+            temparray={"comment":comment, "cdate":cdate, "time":time, "cid":cid, "cusername":cusername, "app_article_id":app_article};
             if(counting1===0) comments.push(temparray);
         }
         var bigarray={"article_details":array, "comment_details":comments};
