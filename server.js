@@ -33,9 +33,9 @@ app.use(session({
 //create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
 
-var array=[];var temparray;var counting=0;
+var array=[];var temparray;var counting=0;var comments=[];counting1=0;
 app.get('/get-articles',function(req,res){
-    pool.query('SELECT app_article.id, app_article.title, app_article.heading, app_article.content, app_article.date, usertable.username FROM app_article,usertable WHERE app_article.user_id=usertable.id',function(err,result){
+    pool.query('SELECT app_article.id, app_article.title, app_article.heading, app_article.content, app_article.date, usertable.username, comments.comment, comments.date as cdate, comments.time, comments.id as cid, comments.username as cusername FROM app_article,usertable,comments WHERE app_article.user_id=usertable.id AND app_article.id=comments.article_id',function(err,result){
     if(err)
     {
         res.status(500).send(err.toString());
@@ -46,13 +46,24 @@ app.get('/get-articles',function(req,res){
             
             for(var i=0;i<result.rows.length;i++)
         {
+            if(i!==0&&(result.rows[i].id!=result.rows[i-1].id))
+            {
             var uname=result.rows[i].username;
             var id=result.rows[i].id;var title=result.rows[i].title;var heading=result.rows[i].heading;
             var date=result.rows[i].date; var content=result.rows[i].content;
             temparray={ "id":id, "title":title, "heading":heading, "date":date, "content":content, "name":uname };
             if(counting===0)array.push(temparray);
-        }    
-        res.send(JSON.stringify(array));counting=1;
+            }
+        }   
+        for(var j=0;j<result.rows.length;j++)
+        {
+            var comment=result.rows[j].comment;var cdate=result.rows[j].cdate;var time=result.rows[j].time;
+            var cid=result.rows[j].cid;var cusername=result.rows[j].cusername;var app_article=result.rows[j].id;
+            temparray={"comment":comment, "cdate":cdate, "time":time, "cid":cid, "cusername":cusername, "app_article":app_article};
+            if(counting1===0) comments.push(temparray);
+        }
+        var bigarray={"article_details":array, "comment_details":comments};
+        res.send(JSON.stringify(bigarray));counting=1,counting1=1;
         }
         
     }
