@@ -237,7 +237,7 @@ app.get('/loadcomments',function(req,res){
                 var ctime=result.rows[i].time;var cdate=result.rows[i].date;var comment=result.rows[i].comment;
                 var article_id=result.rows[i].article_id; var id=result.rows[i].id;
                 temparray={ "id":id, "article_id":article_id, "comment":comment, "cdate":cdate, "ctime":ctime, "cname":cname };
-                if(counting===0)commentarray.push(temparray);
+                commentarray.push(temparray);
                 }   
                 res.send(JSON.stringify(commentarray));  
                 
