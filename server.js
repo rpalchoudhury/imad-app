@@ -220,7 +220,7 @@ app.get('/article-comment',function(req,res){
     });
 });
 
-var temparray=[];var commentarray=[];
+var temparray=[];var commentarray;
 app.get('/loadcomments',function(req,res){
     var devicename=req.header('Device');
     if(devicename=="Android")
@@ -230,7 +230,7 @@ app.get('/loadcomments',function(req,res){
         else { 
             if(result.rows.length===0) { res.status(403).send("No comments exist for this article yet..."); } 
             else {
-           commentarray="";
+           commentarray=[];
                 for(var i=0;i<result.rows.length;i++)
                 {
                 var cname=result.rows[i].username;
