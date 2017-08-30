@@ -164,8 +164,8 @@ app.get('/check-login',function(req,res){
     {
         if(devicename=="Android")
         {
-        var message={"message":"You are not logged in!!!"};
-        res.send(JSON.stringify(message));
+        var nmessage={"message":"You are not logged in!!!"};
+        res.send(JSON.stringify(nmessage));
         }else
         res.send('You are not logged in!!!');
     }
