@@ -198,6 +198,30 @@ app.get('/article-comment',function(req,res){
 });
 
 app.get('/loadcomments',function(req,res){
+    var devicename=req.header('Device');
+    if(devicename=="Android")
+    {var currArticle=req.query.currArt;
+       pool.query('SELECT * FROM "comments" WHERE article_id=$1',[currArticle],function(err,result){
+        if(err) {res.status(500).send(err.toString());}
+        else { 
+            if(result.rows.length===0) { res.status(403).send("No comments exist for this article yet..."); } 
+            else {
+                var commentarray=[];
+                for(var i=0;i<result.rows.length;i++)
+                {
+                var cname=result.rows[i].username;
+                var ctime=result.rows[i].time;var cdate=result.rows[i].date;var comment=result.rows[i].comment;
+                var article_id=result.rows[i].article_id; var id=result.rows[i].id;
+                temparray={ "id":id, "article_id":article_id, "comment":comment, "cdate":cdate, "ctime":ctime, "cname":cname };
+                if(counting===0)commentarray.push(temparray);
+                }   
+                res.send(JSON.stringify(commentarray));  
+                
+            }
+        }
+    }); 
+    }
+    else{
     pool.query('SELECT * FROM "comments" WHERE article_id=$1',[currentArticle],function(err,result){
         if(err) {res.status(500).send(err.toString());}
         else { 
@@ -205,6 +229,7 @@ app.get('/loadcomments',function(req,res){
             else { res.send(JSON.stringify(result));  }
         }
     });
+    }
 });
 
 function createTemplate(data,commentobj){
