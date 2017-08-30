@@ -151,10 +151,22 @@ app.post('/login',function(req,res){
 });
 
 app.get('/check-login',function(req,res){
+    var devicename=req.header('Device'); 
     if(req.session&&req.session.auth&&req.session.auth.userId){
+        if(devicename=="Android")
+        {
+            var message={"message":req.session.auth.userName.toString()};
+            res.send(JSON.stringify(message));
+        }
+        else
         res.send(req.session.auth.userName.toString());
     }else
     {
+        if(devicename=="Android")
+        {
+        var message={"message":"You are not logged in!!!"};
+        res.send(JSON.stringify(message));
+        }else
         res.send('You are not logged in!!!');
     }
 });
