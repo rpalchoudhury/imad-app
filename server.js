@@ -201,7 +201,7 @@ var temparray=[];var commentarray=[];
 app.get('/loadcomments',function(req,res){
     var devicename=req.header('Device');
     if(devicename=="Android")
-    {var currArticle=req.query.currArt;
+    {var currArticle=req.query.apparticle_id;
        pool.query('SELECT * FROM "comments" WHERE article_id=$1',[currArticle],function(err,result){
         if(err) {res.status(500).send(err.toString());}
         else { 
