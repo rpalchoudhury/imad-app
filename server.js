@@ -196,14 +196,25 @@ var commentobj={comment:`
 
 app.get('/article-comment',function(req,res){
     var comment=req.query.comment;
+    var devicename=req.header('Device');
+    if(devicename=="Android")
+    {
+        var user_name=req.query.userName;
+        var article_id=req.query.apparticle_id;
+        
+    }else{
     var user_name=req.session.auth.userName;
     var article_id=currentArticle;
+    }
     var date=req.query.date;
     var time=req.query.time;
      pool.query('INSERT INTO "comments" (article_id, comment, date, time, username) VALUES ($1,$2,$3,$4,$5)', [article_id, comment, date, time, user_name], function(err,result){
         if(err){
             res.status(500).send(err.toString());
-        }else{
+        }else{if(devicename=="Android"){
+            var msg={message: comment};
+                   res.send(JSON.stringify(msg));
+        }else
             res.send(comment);
         }
     });
