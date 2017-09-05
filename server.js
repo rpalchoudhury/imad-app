@@ -56,10 +56,10 @@ app.post('/generate_checksum',function(req,res){
 				             res.status(500).send(err.toString());
                              }else
                              {
-                        var checksumhash={"checksumhash":checksumhash};
-                        console.log('successfully generated checksum'+checksumhash);
+                        var checksumhashobj={"checksumhash":checksumhash};
+                        console.log('successfully generated checksum=>'+checksumhashobj+",chechsum=>"+checksumhash);
 						//res.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
-						res.send(JSON.stringify(checksumhash));
+						res.send(JSON.stringify(checksumhashobj));
 						res.end();
                              }
 					});
