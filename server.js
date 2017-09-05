@@ -5,6 +5,7 @@ var morgan = require('morgan');
 var path = require('path');
 var paytm_config = require('./paytm/paytm_config').paytm_config;
 var paytm_checksum = require('./paytm/checksum');
+var checksumhash = require('./paytm/checksum.js').checksumhash;
 
 //For connecting to database, you need to do npm i pg and make sure node-postgres is installed at minimum 6.0.0.
 var Pool=require('pg').Pool;
@@ -55,7 +56,7 @@ app.post('/generate_checksum',function(req,res){
 				             res.status(500).send(err.toString());
                              }else
                              {
-                        var checksumhash={"checksumhash":params.CHECKSUMHASH};
+                        var checksumhash={"checksumhash":checksumhash};
                         console.log('successfully generated checksum'+checksumhash);
 						res.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
 						res.send(JSON.stringify(checksumhash));
