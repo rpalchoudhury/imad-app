@@ -36,6 +36,7 @@ app.use(session({
 var pool=new Pool(config);
 
 app.post('/generate_checksum',function(req,res){
+    console.log('just inside generate_checksum');
     var paramarray = {};
 				paramarray['MID'] = req.body.MID; //Provided by Paytm
 				paramarray['ORDER_ID'] = req.body.ORDER_ID; //unique OrderId for every request
@@ -47,13 +48,15 @@ app.post('/generate_checksum',function(req,res){
 				paramarray['CALLBACK_URL'] = req.body.CALLBACK_URL;//Provided by Paytm
 				paramarray['EMAIL'] = req.body.EMAIL; // customer email id
 				paramarray['MOBILE_NO'] = req.body.MOBILE_NO; // customer 10 digit mobile no.
-				
+				console.log('paramarray populated with data');
 				paytm_checksum.genchecksum(paramarray, paytm_config.MERCHANT_KEY, function (err, res) {
 				      if(err){
+				            console.log('error:=>'+err.toString());
 				             res.status(500).send(err.toString());
                              }else
                              {
                         var checksumhash={"checksumhash":params.CHECKSUMHASH};
+                        console.log('successfully generated checksum'+checksumhash);
 						res.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
 						res.send(JSON.stringify(checksumhash));
 						res.end();
