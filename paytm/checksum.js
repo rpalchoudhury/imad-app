@@ -3,7 +3,7 @@
 var crypt = require('./crypt');
 var util = require('util');
 var crypto = require('crypto');
-
+var checksumhash="";
 
 //mandatory flag: when it set, only mandatory parameters are added to checksum
 
@@ -126,6 +126,7 @@ function paramsToStringrefund(params, mandatoryflag) {
   return data;
 }
 
+exports.checksumhash=checksumhash;
 module.exports.genchecksum = genchecksum;
 module.exports.verifychecksum = verifychecksum;
 module.exports.verifychecksumbystring = verifychecksumbystring;
