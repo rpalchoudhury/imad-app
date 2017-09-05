@@ -50,6 +50,7 @@ app.post('/generate_checksum',function(req,res){
 				paramarray['EMAIL'] = req.body.EMAIL; // customer email id
 				paramarray['MOBILE_NO'] = req.body.MOBILE_NO; // customer 10 digit mobile no.
 				console.log('paramarray populated with data');
+			
 				paytm_checksum.genchecksum(paramarray, paytm_config.MERCHANT_KEY, function (err, res) {
 				      if(err){
 				            console.log('error:=>'+err.toString());
