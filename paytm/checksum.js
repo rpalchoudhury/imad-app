@@ -4,6 +4,7 @@ var crypt = require('./crypt');
 var util = require('util');
 var crypto = require('crypto');
 
+
 //mandatory flag: when it set, only mandatory parameters are added to checksum
 
 function paramsToString(params, mandatoryflag) {
@@ -39,6 +40,7 @@ crypt.gen_salt(4, function (err, salt) {
     var check_sum = sha256 + salt;
     var encrypted = crypt.encrypt(check_sum, key);
       params.CHECKSUMHASH = encrypted;
+      checksumhash=encrypted;
     cb(undefined, params);
   });
 }
