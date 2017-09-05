@@ -3,6 +3,8 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var paytm_config = require('./paytm/paytm_config').paytm_config;
+var paytm_checksum = require('./paytm/checksum');
 
 //For connecting to database, you need to do npm i pg and make sure node-postgres is installed at minimum 6.0.0.
 var Pool=require('pg').Pool;
@@ -32,6 +34,32 @@ app.use(session({
 
 //create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
+
+app.post('/generate_checksum',function(req,res){
+    var paramarray = {};
+				paramarray['MID'] = req.body.MID; //Provided by Paytm
+				paramarray['ORDER_ID'] = req.body.ORDER_ID; //unique OrderId for every request
+				paramarray['CUST_ID'] = req.body.CUST_ID;  // unique customer identifier 
+				paramarray['INDUSTRY_TYPE_ID'] = req.body.INDUSTRY_TYPE_ID; //Provided by Paytm
+				paramarray['CHANNEL_ID'] = req.body.CHANNEL_ID; //Provided by Paytm
+				paramarray['TXN_AMOUNT'] = req.body.TXN_AMOUNT; // transaction amount
+				paramarray['WEBSITE'] = req.body.WEBSITE; //Provided by Paytm
+				paramarray['CALLBACK_URL'] = req.body.CALLBACK_URL;//Provided by Paytm
+				paramarray['EMAIL'] = req.body.EMAIL; // customer email id
+				paramarray['MOBILE_NO'] = req.body.MOBILE_NO; // customer 10 digit mobile no.
+				
+				paytm_checksum.genchecksum(paramarray, paytm_config.MERCHANT_KEY, function (err, res) {
+				      if(err){
+                                res.status(500).send(JSON.stringify(err.toString()));
+                             }else
+                             {
+						response.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
+						response.write(JSON.stringify(res));
+						response.end();
+                             }
+					});
+});
+
 
 var array=[];var temparray;var counting=0;
 app.get('/get-articles',function(req,res){
