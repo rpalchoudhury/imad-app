@@ -33,7 +33,7 @@ function paramsToString(params, mandatoryflag) {
 }
 
 
-var xxx=function genchecksum(params, key, cb) {
+function genchecksum(params, key, cb) {
   var data = paramsToString(params);
 crypt.gen_salt(4, function (err, salt) {
     var sha256 = crypto.createHash('sha256').update(data + salt).digest('hex');
@@ -42,7 +42,7 @@ crypt.gen_salt(4, function (err, salt) {
       params.CHECKSUMHASH = encrypted;
       checksumhash=encrypted;
     cb(undefined, params);
-    return encrypted;
+    
   });
 };
 function genchecksumbystring(params, key, cb) {
