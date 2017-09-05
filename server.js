@@ -54,7 +54,7 @@ app.post('/generate_checksum',function(req,res){
                              }else
                              {
                         var checksumhash={"checksumhash":params.CHECKSUMHASH};
-						response.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
+						res.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
 						res.send(JSON.stringify(checksumhash));
 						res.end();
                              }
