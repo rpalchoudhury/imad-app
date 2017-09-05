@@ -38,7 +38,7 @@ var pool=new Pool(config);
 
 app.post('/generate_checksum',function(req,res){
     console.log('just inside generate_checksum');
-    var paramarray = {};
+    var paramarray = {};var checksumhashobj=[];
 				paramarray['MID'] = req.body.MID; //Provided by Paytm
 				paramarray['ORDER_ID'] = req.body.ORDER_ID; //unique OrderId for every request
 				paramarray['CUST_ID'] = req.body.CUST_ID;  // unique customer identifier 
@@ -57,7 +57,7 @@ app.post('/generate_checksum',function(req,res){
 				             res.status(500).send(err.toString());
                              }else
                              {
-                        var checksumhashobj={"checksumhash":checksumhash};
+                        checksumhashobj={"checksumhash":checksumhash};
                         console.log('successfully generated checksum=>'+checksumhashobj+",chechsum=>"+checksumhash);
 						//res.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
                              }
