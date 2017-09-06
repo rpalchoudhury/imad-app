@@ -60,7 +60,7 @@ app.post('/generate_checksum',function(req,response){
                         checksumhashobj={"checksumhash":res};
                         console.log('successfully generated checksum=>'+checksumhashobj+",chechsum=>"+checksumhash);
 						response.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
-						response.write(SON.stringify(checksumhashobj));
+						response.write(JSON.stringify(checksumhashobj));
 						response.end();
                              }
 					});
