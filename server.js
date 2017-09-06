@@ -36,7 +36,7 @@ app.use(session({
 //create the pool somewhere globally so its lifetime lasts for as long as your app is running
 var pool=new Pool(config);
 
-app.post('/generate_checksum',function(req,res){
+app.post('/generate_checksum',function(req,response){
     console.log('just inside generate_checksum');
     var paramarray = {};var checksumhashobj=[];
 				paramarray['MID'] = req.body.MID; //Provided by Paytm
@@ -57,12 +57,14 @@ app.post('/generate_checksum',function(req,res){
 				             res.status(500).send(err.toString());
                              }else
                              {
-                        checksumhashobj={"checksumhash":checksumhash};
+                        checksumhashobj={"checksumhash":res};
                         console.log('successfully generated checksum=>'+checksumhashobj+",chechsum=>"+checksumhash);
-						//res.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
+						response.writeHead(200, {'Content-type' : 'text/json','Cache-Control': 'no-cache'});
+						response.write(SON.stringify(checksumhashobj));
+						response.end();
                              }
 					});
-					res.status(200).send(JSON.stringify(checksumhashobj));
+					//res.status(200).send(JSON.stringify(checksumhashobj));
 });
 
 
