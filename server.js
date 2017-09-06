@@ -54,7 +54,7 @@ app.post('/generate_checksum',function(req,response){
 				paytm_checksum.genchecksum(paramarray, paytm_config.MERCHANT_KEY, function (err, res) {
 				      if(err){
 				            console.log('error:=>'+err.toString());
-				             res.status(500).send(err.toString());
+				             response.status(500).send(err.toString());
                              }else
                              {
                         checksumhashobj={"checksumhash":res};
